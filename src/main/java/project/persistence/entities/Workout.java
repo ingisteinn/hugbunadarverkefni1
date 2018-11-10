@@ -1,9 +1,11 @@
 package project.persistence.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Workout {
+    @Id
     private Long id;
     private String name;
     private String category;

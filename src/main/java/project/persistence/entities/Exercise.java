@@ -1,10 +1,12 @@
 package project.persistence.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.List;
 
 @Entity
 public class Exercise {
+    @Id
     private Long id;
     private String name;
     private String category;

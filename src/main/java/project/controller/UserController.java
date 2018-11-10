@@ -19,8 +19,8 @@ public class UserController {
         this.exerciseService = exerciseService;
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String progreeViewGet(Model model) {
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String progressViewGet(Model model) {
         return "Workout";
     }
 }

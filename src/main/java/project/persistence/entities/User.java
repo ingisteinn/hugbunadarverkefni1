@@ -1,25 +1,26 @@
 package project.persistence.entities;
 
 import javax.persistence.Entity;
-import java.util.List;
+import javax.persistence.Id;
+//import java.util.List;
 
 @Entity
 public class User {
+    @Id
     private Long id;
     private String name;
     private String username;
     private String password;
-    private List<Workout> workouts;
+    //private List<Workout> workouts;
 
     public User() {
     }
 
-    public User(Long id, String name, String username, String password, List<Workout> workouts) {
+    public User(Long id, String name, String username, String password) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.password = password;
-        this.workouts = workouts;
     }
 
     public Long getId() {
@@ -54,11 +55,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Workout> getWorkouts() {
+    /*public List<Workout> getWorkouts() {
         return workouts;
     }
 
     public void setWorkouts(List<Workout> workouts) {
         this.workouts = workouts;
-    }
+    }*/
 }
