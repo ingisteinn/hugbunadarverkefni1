@@ -25,7 +25,7 @@ public class PostitNoteController {
     // Method that returns the correct view for the URL /postit
     // This handles the GET request for this URL
     // Notice the `method = RequestMethod.GET` part
-    @RequestMapping(value = "/postit", method = RequestMethod.GET)
+    @RequestMapping(value = "/Chest", method = RequestMethod.GET)
     public String postitNoteViewGet(Model model){
 
         // Add a new Postit Note to the model for the form
@@ -46,7 +46,7 @@ public class PostitNoteController {
     // we can save the postit note because we get the data that was entered
     // into the form.
     // Notice the `method = RequestMethod.POST` part
-    @RequestMapping(value = "/postit", method = RequestMethod.POST)
+    @RequestMapping(value = "/Chest", method = RequestMethod.POST)
     public String postitNoteViewPost(@ModelAttribute("postitNote") PostitNote postitNote,
                                      Model model){
 

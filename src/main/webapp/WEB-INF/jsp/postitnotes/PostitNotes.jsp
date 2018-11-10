@@ -13,27 +13,28 @@
     </head>
     <body>
 
-    <h1><a href="/postit">Postit Notes</a></h1>
+    <h1><a href="/Chest">Exercise</a></h1>
 
     <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
     <%--that is added to the model that is passed to the view.--%>
     <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
-    <sf:form method="POST" modelAttribute="postitNote" action="/postit">
+    <sf:form method="POST" modelAttribute="postitNote" action="/Chest">
 
         <table>
             <tr>
-                <td> Name:</td>
+                <td>Weights:</td>
                 <%--the `path` attribute matches the `name` attribute of the Entity that was passed in the model--%>
-                <td><sf:input path="name" type="text" placeholder="Enter name"/></td>
+                <td><sf:input path="name" type="number" placeholder="Weights used"/></td>
+                <td>Kg</td>
             </tr>
             <tr>
-                <td>Notes:</td>
+                <td>Reps:</td>
                     <%--the `path` attribute matches the `note` attribute of the Entity that was passed in the model--%>
-                <td><sf:textarea path="note" type="text" placeholder="Note text here"/></td>
+                <td><sf:input path="note" type="number" placeholder="Reps performed"/></td>
             </tr>
         </table>
 
-        <input type="submit" VALUE="Post It!"/>
+        <input type="submit" VALUE="Add to workout!"/>
 
     </sf:form>
 
@@ -63,7 +64,7 @@
 
         <%--If all tests are false, then do this--%>
         <c:otherwise>
-            <h3>No notes!</h3>
+            <h3>No exercises!</h3>
         </c:otherwise>
     </c:choose>
 

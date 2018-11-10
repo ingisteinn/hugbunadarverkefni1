@@ -18,6 +18,7 @@
         <li><a href="/Legs">Legs</a></li>
         <li><a href="/Abs">Abs</a></li>
     </ul>
+
     </body>
     <footer>Class HBV501G, University of Iceland</footer>
 </html>
