@@ -6,15 +6,17 @@
 <html lang="en">
 
     <head>
-        <title>Project Title</title>
+        <title>PIGS Workout tracker</title>
     </head>
     <body>
 
-    <h1>HBV501G Project Spring Boot Skeleton.</h1>
-    <p>This skeleton of a Spring Boot Web project was made to help groups get started on their projects without to much hassle.</p>
+    <h1>Choose an exercise category</h1>
 
     <ul>
-        <li><a href="/postit">Click here for Persistence Layer Demo</a></li>
+        <li><a href="/Chest">Chest</a></li>
+        <li><a href="/Back">Back</a></li>
+        <li><a href="/Legs">Legs</a></li>
+        <li><a href="/Abs">Abs</a></li>
     </ul>
     </body>
     <footer>Class HBV501G, University of Iceland</footer>
