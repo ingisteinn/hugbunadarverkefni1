@@ -1,12 +1,13 @@
 package project.persistence.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "exercise") // If you want to specify a table name, you can do so here
 public class Exercise {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String category;
