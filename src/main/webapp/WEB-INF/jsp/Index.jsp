@@ -6,7 +6,7 @@
 <html lang="en">
 
     <head>
-        <title>PIGS Workout tracker</title>
+        <title>PIGS Workout Tracker</title>
 
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
     </head>
