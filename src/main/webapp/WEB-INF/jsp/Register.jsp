@@ -12,7 +12,11 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
 </head>
 <body>
+
+<%--If the model has an attribute`--%>
 <c:if test="${not empty error}"><h3>${error}</h3></c:if>
+
+<%--Register the user according to the inputs in the form--%>
 <sf:form method="POST" modelAttribute="register" action="/register">
 
     <table>
