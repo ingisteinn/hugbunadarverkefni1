@@ -21,8 +21,8 @@ public class ExerciseService {
         return repository.save(exercise);
     }
 
-    public Exercise delete(Exercise exercise) {
-        return repository.delete(exercise);
+    public void delete(Exercise exercise) {
+        repository.delete(exercise);
     }
 
     public List<Exercise> findAll() {
