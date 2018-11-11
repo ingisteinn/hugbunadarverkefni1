@@ -1,5 +1,6 @@
 package project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.Exercise;
 import project.persistence.entities.User;
@@ -10,6 +11,11 @@ import project.persistence.repositories.UserRepository;
 public class UserService {
 
     UserRepository repository;
+
+    @Autowired
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
 
     public User save(User user) {
         return repository.save(user);
