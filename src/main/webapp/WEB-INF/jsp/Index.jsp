@@ -26,7 +26,10 @@
         <li><a href="/Legs">Legs</a></li>
         <li><a href="/Abs">Abs</a></li>
     </ul>
-
+    <div class="add">
+    <p>Can't find the exercise you want?</p>
+    <input class="addButton" type="button" onclick="location.href='/exercise';" VALUE="Add new Exercise"/>
+    </div>
     </body>
     <footer>Class HBV501G, University of Iceland</footer>
 </html>
