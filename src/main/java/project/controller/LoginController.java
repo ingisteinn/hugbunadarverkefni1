@@ -4,25 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import project.persistence.entities.Exercise;
-import project.persistence.entities.PostitNote;
 import project.persistence.entities.User;
-import project.service.ExerciseService;
+import project.service.UserService;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
 public class LoginController {
 
     // Instance Variables
-    private ExerciseService exerciseService;
+    private UserService userService;
 
     // Dependency Injection
     @Autowired
-    public LoginController(ExerciseService exerciseService) {
-        this.exerciseService = exerciseService;
+    public LoginController(UserService userService) {
+        this.userService = userService;
     }
 
     // Request mapping is the path that you want to map this method to
@@ -39,11 +37,12 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginViewPost(Model model){
+    public String loginViewPost(@ModelAttribute("login") User login, HttpSession session, Model model){
+        User loggedInUser = this.userService.findOne(login.getUsername());
+        if(loggedInUser != null) {
+            session.setAttribute("login", loggedInUser);
+        }
 
-        model.addAttribute("login", new User());
-
-        // Return the view
         return "Login";
     }
 }
