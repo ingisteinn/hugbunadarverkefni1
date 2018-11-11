@@ -21,6 +21,10 @@ public class WorkoutController {
         this.workoutService = workoutService;
     }
 
+    /*
+     * Not implemented yet!
+     */
+
     @RequestMapping(value = "/workout", method = RequestMethod.GET)
     public String workoutViewGet(Model model) {
         return "Workout";

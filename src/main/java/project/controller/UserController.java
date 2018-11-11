@@ -27,26 +27,36 @@ public class UserController {
 
     @RequestMapping(value = "/progress", method = RequestMethod.GET)
     public String progressViewGet(HttpSession session, Model model) {
+        // Get logged in user from session
         User loggedInUser = (User)session.getAttribute("login");
         if(loggedInUser != null) {
+            // Get logged in users progress
             List<Progress> userProgress = userService.findByUserId(loggedInUser.getId());
+            // Add logged in users progress to model
             model.addAttribute("progress", userProgress);
         }
+        // Add all exercises to model
         model.addAttribute("exercises", exerciseService.findAll());
+        // Add a empty instance of Progress to model
         model.addAttribute("newProgress", new Progress());
         return "Progress";
     }
 
     @RequestMapping(value = "/progress", method = RequestMethod.POST)
     public String progressViewPost(@ModelAttribute("newProgress") Progress progress, HttpSession session, Model model) {
+        // Get logged in user from session
         User loggedInUser = (User)session.getAttribute("login");
         progress.setUserId(loggedInUser.getId());
-        Progress p = userService.saveProgress(progress);
+        userService.saveProgress(progress);
         if(loggedInUser != null) {
+            // Get logged in users progress
             List<Progress> userProgress = userService.findByUserId(loggedInUser.getId());
+            // Add logged in users progress to model
             model.addAttribute("progress", userProgress);
         }
+        // Add all exercises to model
         model.addAttribute("exercises", exerciseService.findAll());
+        // Add a empty instance of Progress to model
         model.addAttribute("newProgress", new Progress());
         return "Progress";
     }

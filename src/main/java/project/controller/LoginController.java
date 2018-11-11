@@ -14,36 +14,32 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
-    // Instance Variables
     private UserService userService;
 
-    // Dependency Injection
     @Autowired
     public LoginController(UserService userService) {
         this.userService = userService;
     }
 
-    // Request mapping is the path that you want to map this method to
-    // In this case, the mapping is the root "/", so when the project
-    // is running and you enter "localhost:8080" into a browser, this
-    // method is called
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginViewGet(Model model){
-
+        // Add a empty instance of User to model
         model.addAttribute("login", new User());
 
-        // Return the view
         return "Login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginViewPost(@ModelAttribute("login") User login, HttpSession session, Model model){
         User loggedInUser = this.userService.findOne(login.getUsername());
+        // Check if username exists and password matches
         if(loggedInUser != null && loggedInUser.getPassword().equals(login.getPassword())) {
+            // Add logged in user to session
             session.setAttribute("login", loggedInUser);
             //Redirect to frontpage
             return "redirect:";
         } else {
+            // Error handling
             model.addAttribute("error", "Wrong username and/or password");
         }
         return "Login";

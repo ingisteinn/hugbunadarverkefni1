@@ -22,6 +22,7 @@ public class RegisterController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerViewGet(Model model) {
+        // Add a empty instance of User to model
         model.addAttribute("register", new User());
 
         return "Register";
