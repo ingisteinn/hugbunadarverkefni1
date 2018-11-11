@@ -3,20 +3,25 @@ package project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import project.persistence.entities.Exercise;
+import project.service.ExerciseService;
 import project.service.StringManipulationService;
+
+import java.util.List;
 
 @Controller
 public class ExerciseController {
 
     // Instance Variables
-    StringManipulationService stringService;
+    private ExerciseService exerciseService;
 
     // Dependency Injection
     @Autowired
-    public ExerciseController(StringManipulationService stringService) {
-        this.stringService = stringService;
+    public ExerciseController(ExerciseService exerciseService) {
+        this.exerciseService = exerciseService;
     }
 
     // Request mapping is the path that you want to map this method to
@@ -34,41 +39,19 @@ public class ExerciseController {
     }
 
     // To call this method, enter "localhost:8080/user" into a browser
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String user(Model model){
+    @RequestMapping(value = "/exercise", method = RequestMethod.GET)
+    public String exerciseViewGet(Model model){
+        model.addAttribute("exercise", new Exercise());
+        model.addAttribute("exercises", exerciseService.findAll());
+        return "Exercise";
+    }
 
-        // Here we will show how to add attributes to a model and send it to the view
-
-        // Since this small example is for a user, let's create some attributes
-        // that users might usually have in a system
-        String name = "Rincewind";
-        String job  = "Wizzard";
-        String email = "rincewizz@unseenuni.edu";
-        String description = "most likely to survive in a dungeon dimension.";
-
-
-        // Since we want our attributes regarding the user always in the same format,
-        // we are going to convert some strings using our StringManipulationService
-
-        // Let's assume that the name, job and description always have
-        // the first character in upper case
-        name = stringService.convertsFirstCharInStringToUpperCase(name);
-        job = stringService.convertsFirstCharInStringToUpperCase(job);
-        description = stringService.convertsFirstCharInStringToUpperCase(description);
-
-        // Let's assume that we always want e-mail in lower case
-        email = stringService.convertStringToLowerCase(email);
-
-
-        // Now let's add the attributes to the model
-        model.addAttribute("name",name);
-        model.addAttribute("job",job);
-        model.addAttribute("email",email);
-        model.addAttribute("description",description);
-
-        // By adding attributes to the model, we can pass information from the controller
-        // to the view (the .jsp file).
-        // Look at the User.jsp file in /main/webapp/WEB-INF/jsp/ to see how the data is accessed
-        return "User";
+    @RequestMapping(value = "/exercise", method = RequestMethod.POST)
+    public String exerciseViewPost(@ModelAttribute("exercise") Exercise exercise, Model model){
+        this.exerciseService.save(exercise);
+        model.addAttribute("success", "Exercise was added");
+        model.addAttribute("exercise", new Exercise());
+        model.addAttribute("exercises", exerciseService.findAll());
+        return "Exercise";
     }
 }

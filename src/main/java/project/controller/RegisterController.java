@@ -35,7 +35,7 @@ public class RegisterController {
             model.addAttribute("error", "Username taken");
             return "Register";
         }
-        
+
         //Save new user to db
         this.userService.save(user);
         // Return the view

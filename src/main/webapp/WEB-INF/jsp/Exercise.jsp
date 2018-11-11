@@ -13,23 +13,31 @@
 </head>
 <body>
 
-<h1><a href="/Chest">Exercise</a></h1>
-
+<h1>Add new exercise</h1>
+<c:if test="${not empty success}"><h3>${success}</h3></c:if>
 <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
 <%--that is added to the model that is passed to the view.--%>
 <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
-<sf:form method="POST" modelAttribute="exercise" action="/exercises">
+<sf:form method="POST" modelAttribute="exercise" action="/exercise">
 
     <table>
         <tr>
             <td>Name: </td>
                 <%--the `path` attribute matches the `name` attribute of the Entity that was passed in the model--%>
-            <td><sf:input path="name" type="text" placeholder="Name"/></td>
+            <td><sf:input path="name" type="text" placeholder="Name" required="required"/></td>
         </tr>
         <tr>
             <td>Category: </td>
                 <%--the `path` attribute matches the `note` attribute of the Entity that was passed in the model--%>
-            <td><sf:input path="category" type="text" placeholder="Category"/></td>
+            <%--<td><sf:input path="category" type="text" placeholder="Category" required="required"/></td>--%>
+            <td>
+                <sf:select path="category">
+                    <sf:option selected="selected" value="Chest">Chest</sf:option>
+                    <sf:option value="Back">Back</sf:option>
+                    <sf:option value="Legs">Legs</sf:option>
+                    <sf:option value="Abs">Abs</sf:option>
+                </sf:select>
+            </td>
         </tr>
     </table>
 
@@ -53,7 +61,7 @@
                         <%--it in the singular item var, and then just a dot followed by the attribute name--%>
 
                         <%--Create a link based on the name attribute value--%>
-                    <td><a href="/exercises/${ex.name}">${ex.name}</a></td>
+                    <td><a href="/exercise/${ex.name}">${ex.name}</a></td>
                         <%--The String in the note attribute--%>
                     <td>${ex.category}</td>
                 </tr>
