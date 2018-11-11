@@ -6,11 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Workout;
+import project.service.ExerciseService;
+import project.service.UserService;
 import project.service.WorkoutService;
 
 @Controller
 public class WorkoutController {
     private WorkoutService workoutService;
+    private ExerciseService exerciseService;
+    private UserService userService;
 
     @Autowired
     public WorkoutController(WorkoutService workoutService) {
