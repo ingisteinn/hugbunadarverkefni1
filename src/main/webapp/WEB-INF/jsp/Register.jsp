@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
 </head>
 <body>
+<c:if test="${not empty error}"><h3>${error}</h3></c:if>
 <sf:form method="POST" modelAttribute="register" action="/register">
 
     <table>

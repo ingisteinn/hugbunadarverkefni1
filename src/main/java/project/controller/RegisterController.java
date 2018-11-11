@@ -28,13 +28,18 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public RedirectView registerViewPost(@ModelAttribute("register") User user, Model model){
-
+    public String registerViewPost(@ModelAttribute("register") User user, Model model){
+        //Check if username is taken
+        User registeredUser = this.userService.findOne(user.getUsername());
+        if(registeredUser != null) {
+            model.addAttribute("error", "Username taken");
+            return "Register";
+        }
+        
+        //Save new user to db
         this.userService.save(user);
-
-
         // Return the view
-        return new RedirectView("/login");
+        return "redirect:login";
     }
 
 }
