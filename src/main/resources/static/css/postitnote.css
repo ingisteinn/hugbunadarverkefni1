@@ -54,5 +54,7 @@ table.notes tr:nth-child(odd) {
 }
 
 footer{
-    padding-top: 100px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }

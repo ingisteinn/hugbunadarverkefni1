@@ -37,6 +37,12 @@ public class ExerciseController {
         return "Index";
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String indexViewGet(@ModelAttribute("category") String category, Model model){
+        model.addAttribute("exercisesInCategory", exerciseService.findByCategory(category));
+        return "Index";
+    }
+
     // To call this method, enter "localhost:8080/user" into a browser
     @RequestMapping(value = "/exercise", method = RequestMethod.GET)
     public String exerciseViewGet(Model model){
