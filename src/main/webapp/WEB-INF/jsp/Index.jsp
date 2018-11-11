@@ -7,10 +7,18 @@
 
     <head>
         <title>PIGS Workout tracker</title>
+
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
     </head>
     <body>
 
+    <div class="header">
     <h1>Choose an exercise category</h1>
+    <div class="login">
+    <input href="/Login" class="loginButton" type="button" VALUE="Login"/>
+    <a href="/Register">Create new account</a>
+    </div>
+    </div>
 
     <ul>
         <li><a href="/Chest">Chest</a></li>
