@@ -39,10 +39,13 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginViewPost(@ModelAttribute("login") User login, HttpSession session, Model model){
         User loggedInUser = this.userService.findOne(login.getUsername());
-        if(loggedInUser != null) {
+        if(loggedInUser != null && loggedInUser.getPassword().equals(login.getPassword())) {
             session.setAttribute("login", loggedInUser);
+            //Redirect to frontpage
+            return "redirect:";
+        } else {
+            model.addAttribute("error", "Wrong username and/or password");
         }
-
         return "Login";
     }
 }

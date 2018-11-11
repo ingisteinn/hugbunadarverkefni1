@@ -23,6 +23,7 @@
 
     <%--If all tests are false, then do this--%>
     <c:otherwise>
+        <c:if test="${not empty error}"><h3>${error}</h3></c:if>
         <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
         <%--that is added to the model that is passed to the view.--%>
         <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
@@ -32,12 +33,12 @@
                 <tr>
                     <td>Username: </td>
                         <%--the `path` attribute matches the `name` attribute of the Entity that was passed in the model--%>
-                    <td><sf:input path="username" type="text" placeholder="Username"/></td>
+                    <td><sf:input path="username" type="text" placeholder="Username" required="required"/></td>
                 </tr>
                 <tr>
                     <td>Password: </td>
                         <%--the `path` attribute matches the `note` attribute of the Entity that was passed in the model--%>
-                    <td><sf:input path="password" type="password" placeholder="Password"/></td>
+                    <td><sf:input path="password" type="password" placeholder="Password" required="required"/></td>
                 </tr>
             </table>
 
