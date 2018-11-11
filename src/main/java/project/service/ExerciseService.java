@@ -34,12 +34,10 @@ public class ExerciseService {
     }
 
     public List<Exercise> findByCategory(String category) {
-        return repository.findByName(category);
+        return repository.findByCategory(category);
     }
 
     public Exercise findOne(Long id) {
         return repository.findOne(id);
     }
-
-
 }
