@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Exercise;
 import project.service.ExerciseService;
-import project.service.StringManipulationService;
 
 import java.util.List;
 
