@@ -12,21 +12,20 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
 </head>
 <body>
-<!-- Hvað er þetta í tilfelli RegisterController? -->
 <sf:form method="POST" modelAttribute="register" action="/register">
 
     <table>
         <tr>
-            <td>Username</td>
-            <td><sf:input path="username" type="text" placeholder="Enter a username"/></td>
+            <td>Username:</td>
+            <td><sf:input path="username" type="text" placeholder="Enter a username" required="required"/></td>
         </tr>
         <tr>
-            <td>Name</td>
-            <td><sf:input path="name" type="text" placeholder="Enter your name"/></td>
+            <td>Name:</td>
+            <td><sf:input path="name" type="text" placeholder="Enter your name" required="required"/></td>
         </tr>
         <tr>
-            <td>Password</td>
-            <td><sf:input path="password" type="password" placeholder="Enter a password"/></td>
+            <td>Password:</td>
+            <td><sf:input path="password" type="password" placeholder="Enter a password" required="required"/></td>
         </tr>
     </table>
 

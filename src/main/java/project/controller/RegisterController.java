@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.RedirectView;
 import project.service.UserService;
 import project.persistence.entities.User;
 
@@ -27,11 +28,13 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String registerViewPost(@ModelAttribute("register") User user, Model model){
+    public RedirectView registerViewPost(@ModelAttribute("register") User user, Model model){
 
         this.userService.save(user);
+
+
         // Return the view
-        return "Register";
+        return new RedirectView("/login");
     }
 
 }
