@@ -14,14 +14,13 @@
 <body>
 
 <h1>Login</h1>
-<%--Choose what code to generate based on tests that we implement--%>
 <c:choose>
-    <%--If the model has an attribute with the name `postitNotes`--%>
+    <%--If the session has a login attribute--%>
     <c:when test="${empty sessionScope.login}">
         <h1>You have to be logged in to view your progress!</h1>
     </c:when>
 
-    <%--If all tests are false, then do this--%>
+    <%--If the session doesn't have a login attribute--%>
     <c:otherwise>
         <h3>Add progress</h3>
         <sf:form method="POST" modelAttribute="newProgress" action="/progress">
@@ -64,23 +63,15 @@
 
         <c:if test="${not empty progress}">
             <h3>Your progress</h3>
-            <%--Create a table for the Postit Notes--%>
+            <%--Create a table for users progress--%>
             <table class="progress">
-
-                    <%--For each postit note, that is in the list that was passed in the model--%>
-                    <%--generate a row in the table--%>
-                    <%--Here we set `postit` as a singular item out of the list `postitNotes`--%>
+                <%--For each progress generate a row in the table--%>
                 <c:forEach var="prog" items="${progress}">
                     <tr>
-                            <%--We can reference attributes of the Entity by just entering the name we gave--%>
-                            <%--it in the singular item var, and then just a dot followed by the attribute name--%>
-
-                            <%--Create a link based on the name attribute value--%>
                         <td>Sets: ${prog.sets}</td>
                         <td>Reps: ${prog.reps}</td>
                         <td>Weight: ${prog.weight}</td>
                         <td>Date: ${prog.date}</td>
-
                     </tr>
                 </c:forEach>
             </table>
