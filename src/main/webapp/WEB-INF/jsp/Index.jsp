@@ -15,8 +15,8 @@
     <div class="header">
     <h1>Choose an exercise category</h1>
     <div class="login">
-    <input href="/Login" class="loginButton" type="button" onclick="location.href='/Login';" VALUE="Login"/>
-    <a href="/Register">Create new account</a>
+    <input class="loginButton" type="button" onclick="location.href='/login';" VALUE="Login"/>
+    <a href="/register">Create new account</a>
     </div>
     </div>
 
