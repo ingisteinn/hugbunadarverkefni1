@@ -4,13 +4,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import project.persistence.entities.Progress;
 import project.persistence.entities.User;
-import project.persistence.entities.Workout;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.List;
 
-    User save(User user);
+public interface ProgressRepository extends JpaRepository<User, Long> {
 
-    @Query(value = "SELECT p FROM User p WHERE p.username = ?1")
-    User findOne(String username);
+    Progress save(Progress progress);
+
+    @Query(value = "SELECT p FROM Progress p WHERE p.userId = ?1")
+    List<Progress> findByUserId(Long userId);
 
 }
