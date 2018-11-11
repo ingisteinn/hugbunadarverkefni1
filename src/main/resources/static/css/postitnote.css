@@ -15,3 +15,27 @@ table.notes tr:nth-child(even) {
 table.notes tr:nth-child(odd) {
     background-color: azure;
 }
+
+.header{
+    display: flex;
+}
+
+.login{
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginButton{
+    height: 30px;
+    width: 100px;
+}
+
+.login>a{
+    font-size: 12px;
+}
+
+.loginButton>*{
+    font-size: 28px;
+}
