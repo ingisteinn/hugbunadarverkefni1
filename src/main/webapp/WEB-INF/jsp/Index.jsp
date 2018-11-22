@@ -35,6 +35,8 @@
     <div class="add">
     <p>Can't find the exercise you want?</p>
     <input class="addButton" type="button" onclick="location.href='/exercise';" VALUE="Add new Exercise"/>
+    <p>Add/view your progress</p>
+    <input class="addButton" type="button" onclick="location.href='/progress';" VALUE="Add/view progress"/>
     </div>
     </body>
     <footer>Class HBV501G, University of Iceland</footer>

@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h1>Login</h1>
+<h1>Progress</h1>
 <c:choose>
     <%--If the session has a login attribute--%>
     <c:when test="${empty sessionScope.login}">

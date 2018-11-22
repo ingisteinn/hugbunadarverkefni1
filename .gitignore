@@ -3,6 +3,9 @@
 
 ### Java ###
 *.class
+pom.xml
+application.properties
+src/main/resources/application.properties
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
