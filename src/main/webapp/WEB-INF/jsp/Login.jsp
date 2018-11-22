@@ -9,11 +9,9 @@
 <head>
     <title>Exercise</title>
 
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>"/>
 </head>
 <body>
-
-<h1>Login</h1>
 
 <c:choose>
     <%--If the session has a login attribute--%>
@@ -25,20 +23,20 @@
     <c:otherwise>
         <c:if test="${not empty error}"><h3>${error}</h3></c:if>
 
-        <sf:form method="POST" modelAttribute="login" action="/login">
+        <sf:form class="login__form" method="POST" modelAttribute="login" action="/login">
+            <h1>Login</h1>
+            <div>
+                <label for="username">Username: </label>
+                <sf:input id="username" path="username" type="text" placeholder="Username" required="required"/>
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <sf:input id="password" path="password" type="password" placeholder="Password" required="required"/>
+            </div>
 
-            <table>
-                <tr>
-                    <td>Username: </td>
-                    <td><sf:input path="username" type="text" placeholder="Username" required="required"/></td>
-                </tr>
-                <tr>
-                    <td>Password: </td>
-                    <td><sf:input path="password" type="password" placeholder="Password" required="required"/></td>
-                </tr>
-            </table>
 
-            <input type="submit" VALUE="Login"/>
+
+            <input class="button" type="submit" VALUE="Login"/>
 
         </sf:form>
     </c:otherwise>

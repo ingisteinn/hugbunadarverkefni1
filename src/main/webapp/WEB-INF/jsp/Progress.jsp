@@ -9,7 +9,7 @@
 <head>
     <title>Exercise</title>
 
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>"/>
 </head>
 <body>
 

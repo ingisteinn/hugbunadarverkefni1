@@ -9,7 +9,7 @@
 <head>
     <title>Register</title>
 
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>"/>
 </head>
 <body>
 
@@ -17,24 +17,23 @@
 <c:if test="${not empty error}"><h3>${error}</h3></c:if>
 
 <%--Register the user according to the inputs in the form--%>
-<sf:form method="POST" modelAttribute="register" action="/register">
+<sf:form class="login__form" method="POST" modelAttribute="register" action="/register">
 
-    <table>
-        <tr>
-            <td>Username:</td>
-            <td><sf:input path="username" type="text" placeholder="Enter a username" required="required"/></td>
-        </tr>
-        <tr>
-            <td>Name:</td>
-            <td><sf:input path="name" type="text" placeholder="Enter your name" required="required"/></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><sf:input path="password" type="password" placeholder="Enter a password" required="required"/></td>
-        </tr>
-    </table>
+    <h1>Register</h1>
+    <div>
+        <label for="username">Name: </label>
+        <sf:input id="name" path="name" type="text" placeholder="Name" required="required"/>
+    </div>
+    <div>
+        <label for="username">Username: </label>
+        <sf:input id="username" path="username" type="text" placeholder="Username" required="required"/>
+    </div>
+    <div>
+        <label for="password">Password: </label>
+        <sf:input id="password" path="password" type="password" placeholder="Password" required="required"/>
+    </div>
 
-    <input type="submit" VALUE="Create Account"/>
+    <input class="button" type="submit" VALUE="Register"/>
 
 </sf:form>
 

@@ -9,19 +9,31 @@
     <head>
         <title>PIGS Workout Tracker</title>
 
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>"/>
     </head>
     <body>
 
-    <div class="header">
+    <header class="header">
+        <h1>
+            <a class="header__heading" href="/">Workout tracker</a>
+        </h1>
+        <div class="login">
+            <c:choose>
+                <%--If the session has a login attribute--%>
+                <c:when test="${not empty sessionScope.login}">
+                    <a class="button" href="/logout">Logout</a>
+                </c:when>
+
+                <%--If the session doesn't have a login attribute--%>
+                <c:otherwise>
+                    <a class="button" href="/login">Login</a>
+                    <a class="register" href="/register">Create new account</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </header>
+
     <h1>Choose an exercise category</h1>
-    <div class="login">
-    <input class="loginButton" type="button" onclick="location.href='/login';" VALUE="Login"/>
-    <a href="/register">Create new account</a>
-    </div>
-    </div>
-
-
     <%--                                  --Unfinished--
     List of exercise categories, when a category is selected a list of exercises in that category is displayed
     and can be added to your workout. --%>
