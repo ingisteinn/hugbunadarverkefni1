@@ -21,10 +21,9 @@
 
     <%--If the session doesn't have a login attribute--%>
     <c:otherwise>
-        <c:if test="${not empty error}"><h3>${error}</h3></c:if>
-
         <sf:form class="login__form" method="POST" modelAttribute="login" action="/login">
             <h1>Login</h1>
+            <c:if test="${not empty error}"><h4>${error}</h4></c:if>
             <div>
                 <label for="username">Username: </label>
                 <sf:input id="username" path="username" type="text" placeholder="Username" required="required"/>

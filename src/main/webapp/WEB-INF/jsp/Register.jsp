@@ -13,13 +13,12 @@
 </head>
 <body>
 
-<%--If the model has an attribute`--%>
-<c:if test="${not empty error}"><h3>${error}</h3></c:if>
-
 <%--Register the user according to the inputs in the form--%>
 <sf:form class="login__form" method="POST" modelAttribute="register" action="/register">
 
     <h1>Register</h1>
+    <%--If the model has an attribute`--%>
+    <c:if test="${not empty error}"><h4>${error}</h4></c:if>
     <div>
         <label for="username">Name: </label>
         <sf:input id="name" path="name" type="text" placeholder="Name" required="required"/>
