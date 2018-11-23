@@ -15,28 +15,25 @@
         <%@include file="/WEB-INF/jsp/Header.jsp" %>
         <main>
             <h1>Choose an exercise category</h1>
-            <div class="exercise__category-list">
-                <div class="exercise__category">
-                    <h3 class="exercise__category-heading"><a href="/category/chest">Chest</a></h3>
+            <div class="exercise--category">
+                <div class="exercise--category__chest">
+                    <h3><a href="/category/chest">Chest</a></h3>
                 </div>
-                <div class="exercise__category">
+                <div class="exercise--category__back">
                     <h3><a href="/category/back">Back</a></h3>
                 </div>
-                <div class="exercise__category">
+                <div class="exercise--category__legs">
                     <h3><a href="/category/legs">Legs</a></h3>
-                    <ul class="exercise__list">
-                        <c:forEach var="ex" items="${legs}">
-                            <li class="exercise__list-item"><a href="/exercise/${ex.name}">${ex.name}</a></li>
-                        </c:forEach>
-                    </ul>
                 </div>
-                <div class="exercise__category">
-                    <h3><a href="/category/abs">Abs</a></h3>
+                <div class="exercise--category__core">
+                    <h3><a href="/category/core">Core</a></h3>
                 </div>
-                <div class="exercise__category">
+                <div class="exercise--category__arms">
                     <h3><a href="/category/arms">Arms</a></h3>
                 </div>
-            </div>
+                <div class="exercise--category__shoulders">
+                    <h3><a href="/category/shoulders">Shoulders</a></h3>
+                </div>
             </div>
             <div class="add">
                 <div class="add__item">

@@ -111,13 +111,37 @@ h1 {
     justify-content: space-between;
 }
 
-.exercise__category {
+.exercise--category {
 
 }
 
-.exercise__category a {
+.exercise--category a {
     text-decoration: none;
     color: #000;
+}
+
+.exercise--category__arms {
+    background-image: url();
+}
+
+.exercise--category__back {
+
+}
+
+.exercise--category__chest {
+
+}
+
+.exercise--category__core {
+
+}
+
+.exercise--category__legs {
+
+}
+
+.exercise--category__shoulders {
+
 }
 
 .add{

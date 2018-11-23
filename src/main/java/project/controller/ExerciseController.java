@@ -33,8 +33,9 @@ public class ExerciseController {
         model.addAttribute("chest", exerciseService.findByCategory("chest"));
         model.addAttribute("back", exerciseService.findByCategory("back"));
         model.addAttribute("legs", exerciseService.findByCategory("legs"));
-        model.addAttribute("abs", exerciseService.findByCategory("abs"));
+        model.addAttribute("core", exerciseService.findByCategory("core"));
         model.addAttribute("arms", exerciseService.findByCategory("arms"));
+        model.addAttribute("arms", exerciseService.findByCategory("shoulders"));
         return "Index";
     }
 
