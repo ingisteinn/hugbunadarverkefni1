@@ -48,6 +48,15 @@
                         </c:forEach>
                     </ul>
                 </div>
+                <div class="exercise__category">
+                    <h3><a href="/category/arms">Arms</a></h3>
+                    <ul class="exercise__list">
+                        <c:forEach var="ex" items="${abs}">
+                            <li class="exercise__list-item"><a href="/exercise/${ex.name}">${ex.name}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
             </div>
             <div class="add">
                 <div class="add__item">
