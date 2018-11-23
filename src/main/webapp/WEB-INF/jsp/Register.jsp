@@ -12,11 +12,11 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>"/>
 </head>
 <body>
-
+<%@include file="/WEB-INF/jsp/Header.jsp" %>
 <%--Register the user according to the inputs in the form--%>
 <sf:form class="login__form" method="POST" modelAttribute="register" action="/register">
 
-    <h1>Register</h1>
+    <h1 class="login__heading">Register</h1>
     <%--If the model has an attribute`--%>
     <c:if test="${not empty error}"><h4>${error}</h4></c:if>
     <div>

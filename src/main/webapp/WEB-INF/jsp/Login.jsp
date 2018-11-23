@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>"/>
 </head>
 <body>
-
+<%@include file="/WEB-INF/jsp/Header.jsp" %>
 <c:choose>
     <%--If the session has a login attribute--%>
     <c:when test="${not empty sessionScope.login}">
@@ -22,7 +22,7 @@
     <%--If the session doesn't have a login attribute--%>
     <c:otherwise>
         <sf:form class="login__form" method="POST" modelAttribute="login" action="/login">
-            <h1>Login</h1>
+            <h1 class="login__heading">Login</h1>
             <c:if test="${not empty error}"><h4>${error}</h4></c:if>
             <div>
                 <label for="username">Username: </label>

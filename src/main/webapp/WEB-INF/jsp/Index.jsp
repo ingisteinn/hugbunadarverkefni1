@@ -12,26 +12,7 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>"/>
     </head>
     <body>
-        <header class="header">
-            <h1>
-                <a class="header__heading" href="/">Workout tracker</a>
-            </h1>
-            <div class="login">
-                <c:choose>
-                    <%--If the session has a login attribute--%>
-                    <c:when test="${not empty sessionScope.login}">
-                        <a class="button" href="/logout">Logout</a>
-                    </c:when>
-
-                    <%--If the session doesn't have a login attribute--%>
-                    <c:otherwise>
-                        <a class="button" href="/login">Login</a>
-                        <a class="register" href="/register">Create new account</a>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-        </header>
-
+        <%@include file="/WEB-INF/jsp/Header.jsp" %>
         <main>
             <h1>Choose an exercise category</h1>
             <div class="exercise__category-list">
