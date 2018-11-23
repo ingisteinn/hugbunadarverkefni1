@@ -69,6 +69,20 @@ h1 {
     width: 350px;
 }
 
+.exercise__category-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exercise__category {
+
+}
+
+.exercise__category a {
+    text-decoration: none;
+    color: #000;
+}
+
 .add{
     display:flex;
     flex-direction: column;
@@ -81,7 +95,6 @@ h1 {
 .add__item a {
     margin-right: auto;
 }
-
 
 footer{
     position: fixed;

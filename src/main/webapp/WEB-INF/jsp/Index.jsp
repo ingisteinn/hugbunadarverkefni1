@@ -34,16 +34,40 @@
 
         <main>
             <h1>Choose an exercise category</h1>
-            <%--                                  --Unfinished--
-            List of exercise categories, when a category is selected a list of exercises in that category is displayed
-            and can be added to your workout. --%>
-                    <ul>
-                        <li><a href="/chest">Chest</a></li>
-                        <li><a href="/back">Back</a></li>
-                        <li><a href="/legs">Legs</a></li>
-                        <li><a href="/abs">Abs</a></li>
+            <div class="exercise__category-list">
+                <div class="exercise__category">
+                    <h3 class="exercise__category-heading"><a href="/category/chest">Chest</a></h3>
+                    <ul class="exercise__list">
+                        <c:forEach var="ex" items="${chest}">
+                            <li class="exercise__list-item"><a href="/exercise/${ex.name}">${ex.name}</a></li>
+                        </c:forEach>
                     </ul>
-
+                </div>
+                <div class="exercise__category">
+                    <h3><a href="/category/back">Back</a></h3>
+                    <ul class="exercise__list">
+                        <c:forEach var="ex" items="${back}">
+                            <li class="exercise__list-item"><a href="/exercise/${ex.name}">${ex.name}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+                <div class="exercise__category">
+                    <h3><a href="/category/legs">Legs</a></h3>
+                    <ul class="exercise__list">
+                        <c:forEach var="ex" items="${legs}">
+                            <li class="exercise__list-item"><a href="/exercise/${ex.name}">${ex.name}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+                <div class="exercise__category">
+                    <h3><a href="/category/abs">Abs</a></h3>
+                    <ul class="exercise__list">
+                        <c:forEach var="ex" items="${abs}">
+                            <li class="exercise__list-item"><a href="/exercise/${ex.name}">${ex.name}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
             <div class="add">
                 <div class="add__item">
                     <p>Can't find the exercise you want?</p>
