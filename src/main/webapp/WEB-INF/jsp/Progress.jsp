@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html lang="en">
 
@@ -51,11 +52,10 @@
                             <td>Weight: </td>
                             <td><sf:input path="weight" type="text" required="required"/></td>
                         </tr>
-                        <%--Not implemented yet! Not working as expected--%>
-                        <%--<tr>
-                            <td>Reps: </td>
+                        <tr>
+                            <td>Date: </td>
                             <td><sf:input path="date" type="date" required="required"/></td>
-                        </tr>--%>
+                        </tr>
                     </table>
 
                     <input type="submit" VALUE="Add progress"/>
@@ -72,7 +72,7 @@
                                 <td>Sets: ${prog.sets}</td>
                                 <td>Reps: ${prog.reps}</td>
                                 <td>Weight: ${prog.weight}</td>
-                                <td>Date: ${prog.date}</td>
+                                <td>Date: <fmt:formatDate dateStyle = "long" value = "${prog.date}" /></td>
                             </tr>
                         </c:forEach>
                     </table>

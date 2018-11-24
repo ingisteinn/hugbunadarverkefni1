@@ -1,7 +1,7 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
-//import java.util.List;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -12,7 +12,9 @@ public class User {
     private String name;
     private String username;
     private String password;
-    //private List<Workout> workouts;
+    @ElementCollection
+    @CollectionTable(name="listOfWorkouts")
+    private List<Workout> workouts;
 
     public User() {
     }
@@ -56,11 +58,11 @@ public class User {
         this.password = password;
     }
 
-    /*public List<Workout> getWorkouts() {
+    public List<Workout> getWorkouts() {
         return workouts;
     }
 
     public void setWorkouts(List<Workout> workouts) {
         this.workouts = workouts;
-    }*/
+    }
 }

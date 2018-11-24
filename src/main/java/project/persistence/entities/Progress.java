@@ -1,9 +1,8 @@
 package project.persistence.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,6 +16,7 @@ public class Progress {
     private int sets;
     private int reps;
     private double weight;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
     public Progress() {
@@ -75,7 +75,5 @@ public class Progress {
     public Date getDate() {return date; }
 
     public void setDate(Date date) {this.date = date; }
-
-
 
 }

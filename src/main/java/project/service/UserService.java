@@ -6,7 +6,7 @@ import project.persistence.entities.Progress;
 import project.persistence.entities.User;
 import project.persistence.repositories.ProgressRepository;
 import project.persistence.repositories.UserRepository;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -34,6 +34,26 @@ public class UserService {
 
     public List<Progress> findByUserId(Long userId) {
         return progressRepository.findByUserId(userId);
+    }
+
+    public List<List<Map<Object,Object>>> getChartData(Long userId) {
+        Map<Object,Object> map = null;
+        List<List<Map<Object,Object>>> chartData = new ArrayList<List<Map<Object,Object>>>();
+        List<Map<Object,Object>> dataPoints = new ArrayList<Map<Object,Object>>();
+
+        List<Progress> progress = progressRepository.findByUserId(userId);
+
+        for(Progress prog : progress) {
+            map = new HashMap<Object,Object>();
+            map.put("x", prog.getDate().getTime());
+            map.put("y", prog.getWeight());
+            dataPoints.add(map);
+        }
+
+
+        chartData.add(dataPoints);
+
+        return chartData;
     }
 
 }

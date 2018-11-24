@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.Exercise;
 import project.persistence.repositories.ExerciseRepository;
-
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ExerciseService {
@@ -40,4 +39,5 @@ public class ExerciseService {
     public Exercise findOne(Long id) {
         return repository.findOne(id);
     }
+
 }

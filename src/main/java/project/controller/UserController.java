@@ -3,6 +3,7 @@ package project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,9 +11,8 @@ import project.persistence.entities.Progress;
 import project.persistence.entities.User;
 import project.service.ExerciseService;
 import project.service.UserService;
-
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -59,5 +59,13 @@ public class UserController {
         // Add a empty instance of Progress to model
         model.addAttribute("newProgress", new Progress());
         return "Progress";
+    }
+
+    @RequestMapping(value = "/chart", method = RequestMethod.GET)
+    public String progressViewPost( HttpSession session, ModelMap modelMap) {
+        User loggedInUser = (User)session.getAttribute("login");
+        List<List<Map<Object, Object>>> chartData = userService.getChartData(loggedInUser.getId());
+        modelMap.addAttribute("dataPointsList", chartData);
+        return "Chart";
     }
 }
