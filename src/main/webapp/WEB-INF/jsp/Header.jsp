@@ -12,6 +12,7 @@
         <a class="header__heading" href="/">Workout tracker</a>
         <a class="header__link" href="/chart">Analysis</a>
         <a class="header__link" href="/workout">Workouts</a>
+        <a class="header__link" href="/schedule">Schedule</a>
     </div>
 
     <div class="login">
