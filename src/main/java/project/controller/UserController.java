@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import project.persistence.entities.Exercise;
 import project.persistence.entities.Progress;
 import project.persistence.entities.User;
 import project.service.ExerciseService;
@@ -62,11 +63,24 @@ public class UserController {
     }
 
     @RequestMapping(value = "/chart", method = RequestMethod.GET)
-    public String progressViewPost( HttpSession session, ModelMap modelMap) {
+    public String progressViewPost( HttpSession session, ModelMap modelMap, Model model) {
         User loggedInUser = (User)session.getAttribute("login");
         if(loggedInUser != null) {
             List<List<Map<Object, Object>>> chartData = userService.getChartData(loggedInUser.getId());
+            //List<Progress> chartData = userService.findByUserId(loggedInUser.getId());
             modelMap.addAttribute("dataPointsList", chartData);
+            //Get logged in user's progress
+            List<Progress> userProg = userService.findByUserId(loggedInUser.getId());
+            List<Exercise> userExercises = new ArrayList<Exercise>();
+            for (Progress p: userProg) {
+                //Add each exercise in user progress to exercise list if it is not already in the list
+                Exercise e = exerciseService.findOne(p.getExerciseId());
+                if(!userExercises.contains(e)) {
+                    userExercises.add(e);
+                }
+            }
+            model.addAttribute("exercises", userExercises);
+
         }
         return "Chart";
     }

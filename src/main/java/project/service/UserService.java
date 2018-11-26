@@ -48,6 +48,7 @@ public class UserService {
             map = new HashMap<Object,Object>();
             map.put("x", prog.getDate().getTime());
             map.put("y", prog.getWeight());
+            map.put("exId", prog.getExerciseId());
             dataPoints.add(map);
         }
 
