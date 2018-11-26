@@ -16,24 +16,36 @@
         <main>
             <h1>Choose an exercise category</h1>
             <div class="exercise__category">
-                <div class="exercise__category--chest">
-                    <h3><a href="/category/chest">Chest</a></h3>
-                </div>
-                <div class="exercise__category--back">
-                    <h3><a href="/category/back">Back</a></h3>
-                </div>
-                <div class="exercise__category--legs">
-                    <h3><a href="/category/legs">Legs</a></h3>
-                </div>
-                <div class="exercise__category--core">
-                    <h3><a href="/category/core">Core</a></h3>
-                </div>
-                <div class="exercise__category--arms">
-                    <h3><a href="/category/arms">Arms</a></h3>
-                </div>
-                <div class="exercise__category--shoulders">
-                    <h3><a href="/category/shoulders">Shoulders</a></h3>
-                </div>
+                <a href="/category/chest">
+                    <div class="exercise__category--chest">
+                        <h3>Chest</h3>
+                    </div>
+                </a>
+                <a href="/category/back">
+                    <div class="exercise__category--back">
+                        <h3>Back</h3>
+                    </div>
+                </a>
+                <a href="/category/legs">
+                    <div class="exercise__category--legs">
+                        <h3>Legs</h3>
+                    </div>
+                </a>
+                <a href="/category/core">
+                    <div class="exercise__category--core">
+                        <h3>Core</h3>
+                    </div>
+                </a>
+                <a href="/category/arms">
+                    <div class="exercise__category--arms">
+                        <h3>Arms</h3>
+                    </div>
+                </a>
+                <a href="/category/shoulders">
+                    <div class="exercise__category--shoulders">
+                        <h3>Shoulders</h3>
+                    </div>
+                </a>
             </div>
             <div class="add">
                 <div class="add__item">
