@@ -70,4 +70,9 @@ public class UserController {
         }
         return "Chart";
     }
+
+    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
+    public String scheduleViewGet(Model model) {
+        return "Schedule";
+    }
 }
