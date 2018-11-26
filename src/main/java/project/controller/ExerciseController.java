@@ -35,7 +35,7 @@ public class ExerciseController {
         model.addAttribute("legs", exerciseService.findByCategory("legs"));
         model.addAttribute("core", exerciseService.findByCategory("core"));
         model.addAttribute("arms", exerciseService.findByCategory("arms"));
-        model.addAttribute("arms", exerciseService.findByCategory("shoulders"));
+        model.addAttribute("shoulders", exerciseService.findByCategory("shoulders"));
         return "Index";
     }
 
@@ -46,8 +46,7 @@ public class ExerciseController {
     // This method finds all Postit Notes posted by someone with the requested {name}
     // and returns a list with all those Postit Notes.
     @RequestMapping(value = "/category/{cat}", method = RequestMethod.GET)
-    public String getExerciseByName(@PathVariable String cat,
-                                             Model model){
+    public String getExerciseByName(@PathVariable String cat, Model model){
 
         // Get all Postit Notes with this name and add them to the model
         model.addAttribute("exercises", exerciseService.findByCategory(cat));

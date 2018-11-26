@@ -28,10 +28,12 @@
                     <td>Category: </td>
                     <td>
                         <sf:select path="category">
-                            <sf:option selected="selected" value="chest">Chest</sf:option>
+                            <sf:option selected="selected" value="arms">Arms</sf:option>
                             <sf:option value="back">Back</sf:option>
+                            <sf:option value="chest">Chest</sf:option>
+                            <sf:option value="core">Core</sf:option>
                             <sf:option value="legs">Legs</sf:option>
-                            <sf:option value="abs">Abs</sf:option>
+                            <sf:option value="shoulders">Shoulders</sf:option>
                         </sf:select>
                     </td>
                 </tr>
