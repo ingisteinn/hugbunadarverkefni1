@@ -36,6 +36,7 @@ public class UserService {
         return progressRepository.findByUserId(userId);
     }
 
+    //Method to get chart data in the form that canvasjs requires
     public List<List<Map<Object,Object>>> getChartData(Long userId) {
         Map<Object,Object> map = null;
         List<List<Map<Object,Object>>> chartData = new ArrayList<List<Map<Object,Object>>>();

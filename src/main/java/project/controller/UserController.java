@@ -64,8 +64,10 @@ public class UserController {
     @RequestMapping(value = "/chart", method = RequestMethod.GET)
     public String progressViewPost( HttpSession session, ModelMap modelMap) {
         User loggedInUser = (User)session.getAttribute("login");
-        List<List<Map<Object, Object>>> chartData = userService.getChartData(loggedInUser.getId());
-        modelMap.addAttribute("dataPointsList", chartData);
+        if(loggedInUser != null) {
+            List<List<Map<Object, Object>>> chartData = userService.getChartData(loggedInUser.getId());
+            modelMap.addAttribute("dataPointsList", chartData);
+        }
         return "Chart";
     }
 }

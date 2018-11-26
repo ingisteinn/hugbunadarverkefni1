@@ -53,7 +53,9 @@
 </head>
 <body>
 <%@include file="/WEB-INF/jsp/Header.jsp" %>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<c:if test="${not empty sessionScope.login}">
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</c:if>
 </body>
 </html>
