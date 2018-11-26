@@ -15,23 +15,23 @@
         <%@include file="/WEB-INF/jsp/Header.jsp" %>
         <main>
             <h1>Choose an exercise category</h1>
-            <div class="exercise--category">
-                <div class="exercise--category__chest">
+            <div class="exercise__category">
+                <div class="exercise__category--chest">
                     <h3><a href="/category/chest">Chest</a></h3>
                 </div>
-                <div class="exercise--category__back">
+                <div class="exercise__category--back">
                     <h3><a href="/category/back">Back</a></h3>
                 </div>
-                <div class="exercise--category__legs">
+                <div class="exercise__category--legs">
                     <h3><a href="/category/legs">Legs</a></h3>
                 </div>
-                <div class="exercise--category__core">
+                <div class="exercise__category--core">
                     <h3><a href="/category/core">Core</a></h3>
                 </div>
-                <div class="exercise--category__arms">
+                <div class="exercise__category--arms">
                     <h3><a href="/category/arms">Arms</a></h3>
                 </div>
-                <div class="exercise--category__shoulders">
+                <div class="exercise__category--shoulders">
                     <h3><a href="/category/shoulders">Shoulders</a></h3>
                 </div>
             </div>

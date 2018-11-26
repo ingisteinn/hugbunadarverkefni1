@@ -106,41 +106,39 @@ h1 {
     width: 350px;
 }
 
-.exercise__category-list {
+.exercise__category {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
-.exercise--category {
-
-}
-
-.exercise--category a {
+.exercise__category a{
     text-decoration: none;
     color: #000;
 }
 
-.exercise--category__arms {
+.exercise__category--arms {
     background-image: url();
 }
 
-.exercise--category__back {
+.exercise__category--back {
+    background-image: url(../images/purple.jpg);
+    background-size: cover;
+}
+
+.exercise__category--chest {
 
 }
 
-.exercise--category__chest {
+.exercise__category--core {
 
 }
 
-.exercise--category__core {
+.exercise__category--legs {
 
 }
 
-.exercise--category__legs {
-
-}
-
-.exercise--category__shoulders {
+.exercise__category--shoulders {
 
 }
 
