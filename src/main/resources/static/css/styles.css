@@ -116,11 +116,9 @@ h1 {
 
 .exercise__category > a {
     width: calc(100%/6);
-    height: 100%;
 }
 
 .exercise__category > a > div {
-    height: 100%;
 }
 
 .exercise__category a {
@@ -133,33 +131,8 @@ h1 {
 .exercise__category h3 {
     padding: 0;
     margin: 0;
-    height: 100%;
 }
 
-.exercise__category--arms {
-    background-image: url(../images/blue.png);
-}
-
-.exercise__category--back {
-    background-image: url(../images/purple.jpg);
-    background-size: cover;
-}
-
-.exercise__category--chest {
-    background-image: url(../images/yellow.jpeg);
-}
-
-.exercise__category--core {
-    background-image: url(../images/red.jpg);
-}
-
-.exercise__category--legs {
-    background-image: url(../images/orange.jpg);
-}
-
-.exercise__category--shoulders {
-    background-image: url(../images/green.png);
-}
 
 .add{
     display:flex;
