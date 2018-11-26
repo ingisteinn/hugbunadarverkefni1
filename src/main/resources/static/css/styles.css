@@ -122,6 +122,10 @@ h1 {
     margin-top: 10px;
 }
 
+.exercise__category img {
+    width: 100%;
+}
+
 .exercise__category > a {
     width: calc(100%/6);
 }
