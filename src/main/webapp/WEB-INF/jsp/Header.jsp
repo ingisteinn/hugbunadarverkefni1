@@ -10,8 +10,8 @@
 <header class="header">
     <div class="header__links">
         <a class="header__heading" href="/">Workout tracker</a>
-        <a class="header__link" href="/exercises">Exercsises</a>
-        <a class="header__link" href="/workouts">Workouts</a>
+        <a class="header__link" href="/exercises">Exercises</a>
+        <a class="header__link" href="/workout">Workouts</a>
     </div>
 
     <div class="login">
