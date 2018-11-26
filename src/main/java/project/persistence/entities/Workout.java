@@ -11,6 +11,8 @@ public class Workout {
     private Long id;
     private String name;
     private String category;
+    @ElementCollection
+    @CollectionTable(name="listOfExercises")
     private List<Exercise> exercises;
 
     public Workout() {
