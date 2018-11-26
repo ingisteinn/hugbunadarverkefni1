@@ -118,31 +118,36 @@ h1 {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 15em;
     margin-top: 10px;
 }
 
 .exercise__category img {
     width: 100%;
+    padding: 5px;
+    border-radius: 20px;
 }
 
-.exercise__category > a {
-    width: calc(100%/6);
-}
+.exercise__category > div {
 
-.exercise__category > a > div {
 }
 
 .exercise__category a {
     text-decoration: none;
     color: #000;
-    padding: 0;
-    margin: 0;
+    width: calc(100%/6);
+    background-color: #2A2B2D;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 20px;
 }
 
 .exercise__category h3 {
-    padding: 0;
-    margin: 0;
+    margin: 5px;
+    text-align: center;
+    padding: 5px;
+    background-color: #71100F;
+    border-radius: 30px;
+    color: #ffffff;
 }
 
 
