@@ -11,7 +11,7 @@
              var selectedEx = e.options[e.selectedIndex].text;
              var selectedExId = e.options[e.selectedIndex].value;
              var dps = [[]];
-            var chart = new CanvasJS.Chart("chartContainer", {
+             var chart = new CanvasJS.Chart("chartContainer", {
                 theme: "light2", // "light1", "dark1", "dark2"
                 animationEnabled: true,
                 title: {

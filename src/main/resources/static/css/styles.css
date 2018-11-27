@@ -150,6 +150,19 @@ h1 {
     color: #ffffff;
 }
 
+@media (max-width: 600px) {
+    .exercise__category{
+        flex-wrap: wrap;
+    }
+
+    .exercise__category a {
+        width: calc(100%/4);
+    }
+
+    .header{
+        flex-wrap: wrap;
+    }
+}
 
 .add{
     display:flex;
