@@ -250,3 +250,23 @@ ul {list-style-type: none;}
     background: #2A2B2D;
     color: white !important
 }
+
+.analysis__heading {
+    margin-top: 0;
+}
+
+.analysis__controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.analysis__btn {
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.progress__btn {
+    color: #000;
+    font-size: 14px;
+}

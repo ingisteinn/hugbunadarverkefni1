@@ -58,23 +58,36 @@
 <body>
 <%@include file="/WEB-INF/jsp/Header.jsp" %>
 <main>
-    <c:if test="${not empty sessionScope.login}">
-        <form method="POST" action="/chart">
-            <div class="exercise__select--list">
-                <label for="exercise__select">Exercise: </label>
-                <select id="exercise__select">
-                    <c:forEach items="${exercises}" var="exercise">
-                        <option value="${exercise.id}">
-                            ${exercise.name}
-                        </option>
-                    </c:forEach>
-                </select>
+    <c:choose>
+        <%--If the session doesn't have a login attribute--%>
+        <c:when test="${empty sessionScope.login}">
+            <h1>You have to be logged in to view your progress!</h1>
+        </c:when>
+
+        <%--If the session has a login attribute--%>
+        <c:otherwise>
+            <h2 class="analysis__heading">Choose an exercise to view progress</h2>
+            <form method="POST" action="/chart">
+                <div class="exercise__select--list">
+                    <label for="exercise__select">Exercise: </label>
+                    <select id="exercise__select">
+                        <c:forEach items="${exercises}" var="exercise">
+                            <option value="${exercise.id}">
+                                    ${exercise.name}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </form>
+            <div class="analysis__controls">
+                <a class="button analysis__btn" onclick="getChart()">Get graph</a>
+                <a class="progress__btn analysis__btn" href="/progress">Add progress</a>
             </div>
-        </form>
-        <a class="button" onclick="getChart()">Get graph</a>
-        <div class="chart" id="chartContainer" style="height: 370px; width: 100%;"></div>
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    </c:if>
+            <div class="chart" id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </c:otherwise>
+    </c:choose>
 </main>
 </body>
 </html>

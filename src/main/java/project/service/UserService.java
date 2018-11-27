@@ -45,13 +45,12 @@ public class UserService {
         List<Progress> progress = progressRepository.findByUserId(userId);
 
         for(Progress prog : progress) {
-            map = new HashMap<Object,Object>();
+            map = new HashMap<Object, Object>();
             map.put("x", prog.getDate().getTime());
             map.put("y", prog.getWeight());
             map.put("exId", prog.getExerciseId());
             dataPoints.add(map);
         }
-
 
         chartData.add(dataPoints);
 

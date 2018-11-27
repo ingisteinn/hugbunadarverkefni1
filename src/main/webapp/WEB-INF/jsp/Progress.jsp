@@ -15,7 +15,6 @@
 <body>
 <%@include file="/WEB-INF/jsp/Header.jsp" %>
     <main>
-        <h1>Progress</h1>
         <c:choose>
             <%--If the session has a login attribute--%>
             <c:when test="${empty sessionScope.login}">
@@ -24,43 +23,42 @@
 
             <%--If the session doesn't have a login attribute--%>
             <c:otherwise>
-                <h3>Add progress</h3>
                 <sf:form method="POST" modelAttribute="newProgress" action="/progress">
+                    <h1 class="login__heading">Add progress</h1>
+                    <c:if test="${not empty error}"><h4>${error}</h4></c:if>
+                    <div>
+                        <label for="exercise">Exercise: </label>
+                        <sf:select  id="exercise" path="exerciseId">
+                            <c:forEach items="${exercises}" var="exercise">
+                                <sf:option value="${exercise.id}">
+                                    ${exercise.name}
+                                </sf:option>
+                            </c:forEach>
+                        </sf:select>
+                    </div>
+                    <div>
+                        <label for="reps">Reps: </label>
+                        <sf:input id="reps" path="reps" type="number" required="required"/>
+                    </div>
+                    <div>
+                        <label for="sets">Sets: </label>
+                        <sf:input id="sets" path="sets" type="number" required="required"/>
+                    </div>
+                    <div>
+                        <label for="weight">Weight: </label>
+                        <sf:input id="weight" path="weight" type="text" required="required"/>
+                    </div>
+                    <div>
+                        <label for="date">Date: </label>
+                        <sf:input id="date" path="date" type="date" required="required"/>
+                    </div>
 
-                    <table>
-                        <tr>
-                            <td>Exercise: </td>
-                            <td>
-                                <sf:select  path="exerciseId">
-                                    <c:forEach items="${exercises}" var="exercise">
-                                        <sf:option value="${exercise.id}">
-                                                ${exercise.name}
-                                        </sf:option>
-                                    </c:forEach>
-                                </sf:select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Sets: </td>
-                            <td><sf:input path="sets" type="number" required="required"/></td>
-                        </tr>
-                        <tr>
-                            <td>Reps: </td>
-                            <td><sf:input path="reps" type="number" required="required"/></td>
-                        </tr>
-                        <tr>
-                            <td>Weight: </td>
-                            <td><sf:input path="weight" type="text" required="required"/></td>
-                        </tr>
-                        <tr>
-                            <td>Date: </td>
-                            <td><sf:input path="date" type="date" required="required"/></td>
-                        </tr>
-                    </table>
 
-                    <input type="submit" VALUE="Add progress"/>
+                    <input class="button" type="submit" onsubmit="getChart()" VALUE="Add progress"/>
 
                 </sf:form>
+
+
 
                 <c:if test="${not empty progress}">
                     <h3>Your progress</h3>

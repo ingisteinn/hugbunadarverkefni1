@@ -80,7 +80,7 @@ public class UserController {
                 }
             }
             model.addAttribute("exercises", userExercises);
-
+            model.addAttribute("newProgress", new Progress());
         }
         return "Chart";
     }
