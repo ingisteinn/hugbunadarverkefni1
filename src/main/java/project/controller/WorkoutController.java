@@ -32,8 +32,13 @@ public class WorkoutController {
      */
 
     @RequestMapping(value = "/workout", method = RequestMethod.GET)
-    public String workoutViewGet(Model model) {
-        model.addAttribute("workout", new Workout());
+    public String workoutViewGet(@ModelAttribute("workout") Workout workout, Model model) {
+        if(workout != null) {
+            model.addAttribute("workout", workout);
+        } else {
+            model.addAttribute("workout", new Workout());
+        }
+
         model.addAttribute("exercise", new Exercise());
         model.addAttribute("exercises", exerciseService.findAll());
         return "Workout";
@@ -47,12 +52,14 @@ public class WorkoutController {
         return "Workout";
     }
 
-    @RequestMapping(value = "/addExerciseToWorkout", method = RequestMethod.POST)
+    @RequestMapping(value = "/addExerciseToWorkout", method = RequestMethod.GET)
     public String workoutViewPostExercise(@ModelAttribute("exercise") Exercise ex, @ModelAttribute("workout") Workout workout, Model model) {
         List<Exercise> listEx = workout.getExercises();
+        String exName = exerciseService.findOne(ex.getId()).getName();
+        ex.setName(exName);
         listEx.add(ex);
         workout.setExercises(listEx);
-
+        System.out.println("Test post");
         model.addAttribute("workout", workout);
         model.addAttribute("exercises", exerciseService.findAll());
         return "redirect:workout";

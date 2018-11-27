@@ -25,7 +25,7 @@
 
             <!-- Hér kemur listi af workouts sem eru til -->
             <h2> Create a new workout: </h2>
-            <sf:form method="POST" modelAttribute="exercise" action="/workout">
+            <sf:form method="POST" modelAttribute="exercise" action="/addExerciseToWorkout">
                 <div>
                     <label for="exercise">Exercise: </label>
                     <sf:select  id="exercise" path="id">
@@ -37,7 +37,27 @@
                     </sf:select>
                 </div>
 
+
                 <div>
+                    <label for="sets">Sets: </label>
+                    <sf:input id="sets" path="sets" type="number" required="required"/>
+                </div>
+                <div>
+                    <label for="reps">Reps: </label>
+                    <sf:input id="reps" path="reps" type="number" required="required"/>
+                </div>
+                <div>
+                    <label for="weight">Weight: </label>
+                    <sf:input id="weight" path="weight" type="number" required="required"/>
+                </div>
+            </sf:form>
+            <sf:form method="POST" modelAttribute="workout" action="/workout">
+                <div class="add__item">
+                    <a class="button" href="/addExerciseToWorkout">Add exercise to workout</a>
+                </div>
+
+                <div>
+
                     <label for="name">Name: </label>
                     <sf:input id="name" path="name" type="text" required="required"/>
                 </div>
@@ -45,22 +65,19 @@
                     <label for="category">Category: </label>
                     <sf:input id="category" path="category" type="text"/>
                 </div>
-                <div>
-                    <label for="sets">Sets: </label>
-                    <sf:input id="sets" path="sets" type="number" required="required"/>
-                </div>
-                <div>
-                    <label for="reps">Sets: </label>
-                    <sf:input id="reps" path="reps" type="number" required="required"/>
-                </div>
-
             </sf:form>
+
+            <ul>
+                <c:forEach var="ex" items="${workout.exercises}">
+                    <li> ${ex.name}</li>
+                </c:forEach>
+            </ul>
 
 
 
 
         <div class="add__item">
-            <a class="button" href="/workout/create">Create a new workout</a>
+            <a class="button" href="/workout">Create workout</a>
         </div>
 
         </c:otherwise>
