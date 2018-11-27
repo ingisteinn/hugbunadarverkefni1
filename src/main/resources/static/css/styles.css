@@ -175,7 +175,7 @@ ul {list-style-type: none;}
 /* Month header */
 .month {
     padding: 30px 25px;
-    width: 60%;
+    width: 70%;
     background: #2A2B2D;
     text-align: center;
 }
@@ -207,7 +207,7 @@ ul {list-style-type: none;}
 
 /* Weekdays (Mon-Sun) */
 .weekdays {
-    width: 60%;
+    width: 70%;
     margin: 0;
     padding: 10px 0;
     background-color:#ddd;
@@ -222,7 +222,7 @@ ul {list-style-type: none;}
 
 /* Days (1-31) */
 .days {
-    width: 60%;
+    width: 70%;
     padding: 10px 0;
     background: #eee;
     margin: 0;
@@ -231,7 +231,8 @@ ul {list-style-type: none;}
 .days li {
     list-style-type: none;
     display: inline-block;
-    width: 13.6%;
+    height: 100px;
+    width: 15%;
     text-align: center;
     margin-bottom: 5px;
     font-size:12px;
@@ -242,7 +243,10 @@ ul {list-style-type: none;}
 
 /* Highlight the "current" day */
 .days li .active {
-    padding: 5px;
+    padding-bottom: 80px;
+    padding-top: 10px;
+    padding-left: 90px;
+    padding-right: 90px;
     background: #2A2B2D;
     color: white !important
 }
