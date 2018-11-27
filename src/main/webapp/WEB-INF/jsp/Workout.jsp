@@ -49,10 +49,13 @@
                     <label for="sets">Sets: </label>
                     <sf:input id="sets" path="sets" type="number" required="required"/>
                 </div>
+                <div>
+                    <label for="reps">Sets: </label>
+                    <sf:input id="reps" path="reps" type="number" required="required"/>
+                </div>
 
             </sf:form>
 
-            <!-- Hér kemur listi af workouts, titill sem hægt er að ýta á -->
 
 
 
