@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Exercise;
 import project.persistence.entities.Progress;
 import project.persistence.entities.User;
+import project.persistence.entities.Workout;
 import project.service.ExerciseService;
 import project.service.UserService;
+import project.service.WorkoutService;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
@@ -19,6 +21,7 @@ import java.util.*;
 public class UserController {
     private UserService userService;
     private ExerciseService exerciseService;
+    private WorkoutService workoutService;
 
     @Autowired
     public UserController(UserService userService, ExerciseService exerciseService) {
@@ -86,7 +89,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)
+    public String scheduleViewGet(HttpSession session, Model model) {
+        // Get logged in user from session
+        User loggedInUser = (User)session.getAttribute("login");
+        if(loggedInUser != null) {
+            // Get logged in users progress
+            List<Workout> userWorkouts = workoutService.findAll();
+            // Add logged in users progress to model
+            model.addAttribute("workout", userWorkouts);
+        }
+        return "Schedule";
+    }
+
+    /*
+    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
     public String scheduleViewGet(Model model) {
         return "Schedule";
     }
+    */
 }
