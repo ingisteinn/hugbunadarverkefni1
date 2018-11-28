@@ -322,7 +322,15 @@ ul {list-style-type: none;}
 }
 
 .imgcontainer {
-    width: 80%
+    margin: auto;
+    width: 40%;
+}
+
+.imgcontainer img {
+    height: auto;
+    width: auto;
+    max-width: 450px;
+    max-height: 450px;
 }
 
 .exercise__category__list__item {
