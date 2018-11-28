@@ -284,3 +284,11 @@ ul {list-style-type: none;}
     color: #000;
     font-size: 14px;
 }
+
+.firstletter{
+    text-transform: capitalize;
+}
+
+.exercise__category__list__item{
+    text-transform: capitalize;
+}
