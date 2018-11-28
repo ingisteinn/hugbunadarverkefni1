@@ -11,21 +11,14 @@ public class Exercise {
     private Long id;
     private String name;
     private String category;
-    private int sets;
-    private int reps;
-    private double weight;
-
 
     public Exercise() {
     }
 
-    public Exercise(Long id, String name, String category, int sets, int reps, double weight) {
+    public Exercise(Long id, String name, String category) {
         this.id = id;
         this.name = name;
         this.category = category;
-        this.sets = sets;
-        this.reps = reps;
-        this.weight = weight;
     }
 
     public Long getId() {
@@ -48,27 +41,4 @@ public class Exercise {
         this.category = category;
     }
 
-    public int getSets() {
-        return sets;
-    }
-
-    public void setSets(int sets) {
-        this.sets = sets;
-    }
-
-    public int getReps() {
-        return reps;
-    }
-
-    public void setReps(int reps) {
-        this.reps = reps;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
 }

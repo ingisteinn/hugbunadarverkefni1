@@ -19,6 +19,8 @@ public interface WorkoutRepository extends JpaRepository<Workout, Long> {
 
     List<Workout> findByCategory(String category);
 
+    List<Workout> findByUserId(Long id);
+
     @Query(value = "SELECT p FROM Workout p WHERE p.id = ?1")
     Workout findOne(Long id);
 }

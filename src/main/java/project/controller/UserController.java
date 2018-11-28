@@ -96,7 +96,7 @@ public class UserController {
         if(loggedInUser != null) {
             // Get logged in users progress
             User user = userService.findOne(loggedInUser.getUsername());
-            List<Workout> userWorkouts = user.getWorkouts();
+            List<Workout> userWorkouts = workoutService.findByUserId(user.getId());
             // Add logged in users progress to model
             model.addAttribute("workout", userWorkouts);
         }

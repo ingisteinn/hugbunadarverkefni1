@@ -1,7 +1,6 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -12,10 +11,6 @@ public class User {
     private String name;
     private String username;
     private String password;
-    @ElementCollection
-    @CollectionTable(name="listOfWorkouts")
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    private List<Workout> workouts;
 
     public User() {
     }
@@ -59,11 +54,4 @@ public class User {
         this.password = password;
     }
 
-    public List<Workout> getWorkouts() {
-        return workouts;
-    }
-
-    public void setWorkouts(List<Workout> workouts) {
-        this.workouts = workouts;
-    }
 }
