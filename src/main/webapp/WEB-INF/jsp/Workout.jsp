@@ -27,8 +27,8 @@
             <h2> Create a new workout: </h2>
             <sf:form method="POST" modelAttribute="exercise" action="/addExerciseToWorkout">
                 <div>
-                    <label for="exercise">Exercise: </label>
-                    <sf:select  id="exercise" path="id">
+                    <label for="exercise" class="workout--label">Exercise: </label>
+                    <sf:select class="workout--dropdown" id="exercise" path="id">
                         <c:forEach items="${exercises}" var="exercise">
                             <sf:option value="${exercise.id}">
                                 ${exercise.name}
@@ -38,30 +38,30 @@
                 </div>
 
 
-                <div>
-                    <label for="sets">Sets: </label>
-                    <sf:input id="sets" path="sets" type="number" required="required"/>
+                <div class="workout--div">
+                    <label for="sets" class ="workout--label">Sets: </label>
+                    <sf:input id="sets" path="sets" type="number" required="required" class="workout--input"/>
                 </div>
-                <div>
-                    <label for="reps">Reps: </label>
-                    <sf:input id="reps" path="reps" type="number" required="required"/>
+                <div class="workout--div">
+                    <label for="reps" class="workout--label">Reps: </label>
+                    <sf:input id="reps" path="reps" type="number" required="required" class="workout--input"/>
                 </div>
-                <div>
-                    <label for="weight">Weight: </label>
-                    <sf:input id="weight" path="weight" type="number" required="required"/>
+                <div class="workout--div">
+                    <label for="weight" class="workout--label">Weight: </label>
+                    <sf:input id="weight" path="weight" type="number" required="required" class="workout--input"/>
                 </div>
                 <input class="button" type="submit" VALUE="Add exercise"/>
             </sf:form>
             <sf:form method="POST" modelAttribute="workout" action="/workout">
 
-                <div>
+                <div class="workout--div">
 
-                    <label for="name">Name: </label>
-                    <sf:input id="name" path="name" type="text" required="required"/>
+                    <label for="name" class="workout--label">Name: </label>
+                    <sf:input id="name" path="name" type="text" required="required" class="workout--input"/>
                 </div>
-                <div>
-                    <label for="category">Category: </label>
-                    <sf:input id="category" path="category" type="text"/>
+                <div class="workout--div">
+                    <label for="category" class="workout--label">Category: </label>
+                    <sf:input id="category" path="category" type="text" required="required" class="workout--input"/>
                 </div>
                 <input class="button" type="submit" VALUE="Create workout"/>
             </sf:form>
