@@ -14,7 +14,7 @@ public class Workout {
     private String category;
     @ElementCollection
     @CollectionTable(name="listOfExercises")
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<Exercise> exercises;
     private Date date;
 

@@ -14,7 +14,7 @@ public class User {
     private String password;
     @ElementCollection
     @CollectionTable(name="listOfWorkouts")
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<Workout> workouts;
 
     public User() {

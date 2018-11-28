@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Exercise;
+import project.persistence.entities.User;
 import project.persistence.entities.Workout;
 import project.service.ExerciseService;
 import project.service.UserService;
@@ -54,7 +55,14 @@ public class WorkoutController {
         Workout w = (Workout)session.getAttribute("workout");
         w.setName(workout.getName());
         w.setCategory(workout.getCategory());
+        User loggedInUser = (User)session.getAttribute("login");
+        List<Workout> userWorkouts = new ArrayList<>();
+        if(loggedInUser.getWorkouts() != null) {
+            userWorkouts = loggedInUser.getWorkouts();
+        }
 
+        userWorkouts.add(w);
+        loggedInUser.setWorkouts(userWorkouts);
         this.workoutService.save(w);
         model.addAttribute("exercise", new Exercise());
         model.addAttribute("exercises", exerciseService.findAll());
