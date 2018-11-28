@@ -61,12 +61,30 @@
             });
         })
 
-        var day,month,year;
+        var day, month, year;
+        var months = {
+            'Jan': 1,
+            'Feb': 2,
+            'Mar': 3,
+            'Apr': 4,
+            'May': 5,
+            'Jun': 6,
+            'Jul': 7,
+            'Aug': 8,
+            'Sep': 9,
+            'Oct': 10,
+            'Nov': 11,
+            'Dec': 12
+        };
 
         function getDate(_day,_month,_year){
-            day = _day;
-            month = _month;
-            year = _year;
+            day = Number(_day);
+            month = months._month;
+            year = Number(_year);
+            <c:forEach items="${workout}" var="workout">
+            //Add to array if the progress is for the selected exercise
+            //if
+            </c:forEach>
         }
 
 
@@ -89,9 +107,9 @@
         <label for="workout">Workout: </label>
         <select  id="workout">
             <c:forEach items="${workout}" var="workout">
-                <sf:option value="${workout.id}">
+                <option value="${workout.id}" path="id">
                     ${workout.name}
-                </sf:option>
+                </option>
             </c:forEach>
         </select>
     </div>

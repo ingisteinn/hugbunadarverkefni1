@@ -96,7 +96,7 @@ public class WorkoutController {
         WorkoutExercise saveWork = workoutExerciseService.save(ex);
         listEx.add(saveWork);
         workout.setExercises(listEx);
-        
+
         session.setAttribute("workout", workout);
         return "redirect:workout";
     }

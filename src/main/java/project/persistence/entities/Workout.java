@@ -18,6 +18,9 @@ public class Workout {
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<WorkoutExercise> exercises;
     private Date date;
+    private int day;
+    private int month;
+    private int year;
 
     public Workout() {
     }
@@ -68,10 +71,14 @@ public class Workout {
     public void setExercises(List exercises) { this.exercises = exercises; }
 
     public Date getDate() {
+
         return date;
     }
 
     public void setDate(Date date) {
+        this.day = date.getDay();
+        this.month = date.getMonth();
+        this.year = date.getYear();
         this.date = date;
     }
 }
