@@ -81,7 +81,6 @@
                     <li> ${ex.name}</li>
                 </c:forEach>
             </ul>
-            <input class="button" type="submit" VALUE="Create workout"/>
 
         </c:otherwise>
     </c:choose>
