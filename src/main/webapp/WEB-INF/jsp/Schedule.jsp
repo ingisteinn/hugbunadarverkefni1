@@ -82,18 +82,18 @@
 
         <%--If the session doesn't have a login attribute--%>
     <c:otherwise>
-    <sf:form method="POST" modelAttribute="newSchedule" action="/schedule">
+    <sf:form method="POST" modelAttribute="newWorkout" action="/schedule">
     <h1 class="login__heading">Add to schedule</h1>
     <c:if test="${not empty error}"><h4>${error}</h4></c:if>
     <div>
         <label for="workout">Workout: </label>
-        <sf:select  id="workout" path="workoutId">
-            <c:forEach items="${workouts}" var="workout">
+        <select  id="workout">
+            <c:forEach items="${workout}" var="workout">
                 <sf:option value="${workout.id}">
                     ${workout.name}
                 </sf:option>
             </c:forEach>
-        </sf:select>
+        </select>
     </div>
     <div>
         <label for="date">Date: </label>

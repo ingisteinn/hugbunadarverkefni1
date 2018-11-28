@@ -24,9 +24,10 @@ public class UserController {
     private WorkoutService workoutService;
 
     @Autowired
-    public UserController(UserService userService, ExerciseService exerciseService) {
+    public UserController(UserService userService, ExerciseService exerciseService, WorkoutService workoutService) {
         this.userService = userService;
         this.exerciseService = exerciseService;
+        this.workoutService = workoutService;
     }
 
     @RequestMapping(value = "/progress", method = RequestMethod.GET)
@@ -94,10 +95,12 @@ public class UserController {
         User loggedInUser = (User)session.getAttribute("login");
         if(loggedInUser != null) {
             // Get logged in users progress
+
             List<Workout> userWorkouts = workoutService.findAll();
             // Add logged in users progress to model
             model.addAttribute("workout", userWorkouts);
         }
+        model.addAttribute("newWorkout", new Workout());
         return "Schedule";
     }
 

@@ -50,11 +50,9 @@
                     <label for="weight">Weight: </label>
                     <sf:input id="weight" path="weight" type="number" required="required"/>
                 </div>
+                <input class="button" type="submit" VALUE="Add exercise"/>
             </sf:form>
             <sf:form method="POST" modelAttribute="workout" action="/workout">
-                <div class="add__item">
-                    <a class="button" href="/addExerciseToWorkout">Add exercise to workout</a>
-                </div>
 
                 <div>
 
@@ -65,6 +63,7 @@
                     <label for="category">Category: </label>
                     <sf:input id="category" path="category" type="text"/>
                 </div>
+                <input class="button" type="submit" VALUE="Create workout"/>
             </sf:form>
 
             <ul>
@@ -74,11 +73,6 @@
             </ul>
 
 
-
-
-        <div class="add__item">
-            <a class="button" href="/workout">Create workout</a>
-        </div>
 
         </c:otherwise>
     </c:choose>

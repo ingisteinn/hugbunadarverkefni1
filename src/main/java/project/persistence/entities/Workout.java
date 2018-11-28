@@ -1,6 +1,7 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,16 +14,19 @@ public class Workout {
     private String category;
     @ElementCollection
     @CollectionTable(name="listOfExercises")
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<Exercise> exercises;
+    private Date date;
 
     public Workout() {
     }
 
-    public Workout(Long id, String name, String category, List exercises) {
+    public Workout(Long id, String name, String category, List exercises, Date date) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.exercises = exercises;
+        this.date = date;
     }
 
     public Long getId() {
@@ -49,7 +53,15 @@ public class Workout {
         this.category = category;
     }
 
-    public List getExercises() { return exercises; }
+    public List<Exercise> getExercises() { return exercises; }
 
     public void setExercises(List exercises) { this.exercises = exercises; }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }

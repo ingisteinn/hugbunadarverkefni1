@@ -1,5 +1,6 @@
 package project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.Workout;
 import project.persistence.repositories.WorkoutRepository;
@@ -10,6 +11,7 @@ import java.util.List;
 public class WorkoutService {
     WorkoutRepository repository;
 
+    @Autowired
     public WorkoutService(WorkoutRepository repository) {
         this.repository = repository;
     }
