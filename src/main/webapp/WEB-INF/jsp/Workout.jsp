@@ -76,6 +76,17 @@
 
         </c:otherwise>
     </c:choose>
+        <h2>My workouts</h2>
+        <div>
+            <c:forEach var="userWork" items="${userWorkouts}">
+                <div>${userWork.name}</div>
+                <div>
+                    <c:forEach var="ex" items="${userWork.exercises}">
+                        <li> ${ex.name}</li>
+                    </c:forEach>
+                </div>
+            </c:forEach>
+        </div>
     </main>
 
 <%-- Unfinished --%>
