@@ -1,3 +1,5 @@
+var g_day, g_month, g_year;
+
 var vanillaCalendar = {
   month: document.querySelectorAll('[data-calendar-area="month"]')[0],
   next: document.querySelectorAll('[data-calendar-toggle="next"]')[0],
@@ -73,11 +75,19 @@ var vanillaCalendar = {
           '[data-calendar-label="picked"]'
         )[0]
         picked.innerHTML = this.dataset.calendarDate
+        g_month = picked.innerHTML.substring(4,7);
+        g_day = picked.innerHTML.substring(8,10);
+        g_year = picked.innerHTML.substring(11,15);
+        getDate(g_day,g_month,g_year);
         _this.removeActiveClass()
         this.classList.add('vcal-date--selected')
       })
     }
   },
+
+    getMonthFromString: function(mon){
+        return new Date(Date.parse(mon +" 1, 2012")).getMonth()+1
+},
 
   createMonth: function () {
     var currentMonth = this.date.getMonth()

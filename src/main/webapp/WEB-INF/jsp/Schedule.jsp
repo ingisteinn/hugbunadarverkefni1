@@ -52,6 +52,7 @@
         <span data-calendar-label="picked"></span>
     </p>
 
+
     <script src="/js/vanillaCalendar.js" type="text/javascript"></script>
     <script>
         window.addEventListener('load', function () {
@@ -59,6 +60,18 @@
                 disablePastDays: false
             });
         })
+
+        var day,month,year;
+
+        function getDate(_day,_month,_year){
+            day = _day;
+            month = _month;
+            year = _year;
+        }
+
+
+
+
     </script>
 
     <c:choose>
