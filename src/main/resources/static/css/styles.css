@@ -178,17 +178,17 @@ h1 {
     margin-right: auto;
 }
 
-.workout--input {
+.input {
     margin-left: 55px;
 }
 
-.workout--div {
+.input--div {
     display: flex;
     flex-direction: row;
     margin: 4px;
 }
 
-.workout--label {
+.label {
     width: 15px;
 }
 
