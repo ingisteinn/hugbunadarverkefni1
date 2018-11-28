@@ -10,19 +10,21 @@ public class Workout {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long userId;
     private String name;
     private String category;
     @ElementCollection
-    @CollectionTable(name="listOfExercises")
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    private List<Exercise> exercises;
+    @CollectionTable(name="listOfWorkoutExercises")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private List<WorkoutExercise> exercises;
     private Date date;
 
     public Workout() {
     }
 
-    public Workout(Long id, String name, String category, List exercises, Date date) {
+    public Workout(Long id, Long userId, String name, String category, List exercises, Date date) {
         this.id = id;
+        this.userId = userId;
         this.name = name;
         this.category = category;
         this.exercises = exercises;
@@ -35,6 +37,14 @@ public class Workout {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -53,7 +63,7 @@ public class Workout {
         this.category = category;
     }
 
-    public List<Exercise> getExercises() { return exercises; }
+    public List<WorkoutExercise> getExercises() { return exercises; }
 
     public void setExercises(List exercises) { this.exercises = exercises; }
 

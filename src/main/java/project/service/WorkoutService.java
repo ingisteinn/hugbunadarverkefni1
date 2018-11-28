@@ -32,6 +32,10 @@ public class WorkoutService {
         return repository.findByName(name);
     }
 
+    public List<Workout> findByUserId(Long id) {
+        return repository.findByUserId(id);
+    }
+
     public List<Workout> findByCategory(String category) {
         return repository.findByCategory(category);
     }
