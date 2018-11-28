@@ -72,6 +72,7 @@
                     <sf:input id="category" path="category" type="text" required="required" class="input"/>
                 </div>
 
+                <input class="button" type="submit" VALUE="Create workout"/>
             </sf:form>
 
             <h2>Exercises in workout: </h2>
