@@ -26,9 +26,9 @@
                 <sf:form method="POST" modelAttribute="newProgress" action="/progress">
                     <h1 class="login__heading">Add progress</h1>
                     <c:if test="${not empty error}"><h4>${error}</h4></c:if>
-                    <div>
-                        <label for="exercise">Exercise: </label>
-                        <sf:select  id="exercise" path="exerciseId">
+                    <div class="input--div">
+                        <label for="exercise" class="label">Exercise: </label>
+                        <sf:select  class="progress--dropdown" id="exercise" path="exerciseId">
                             <c:forEach items="${exercises}" var="exercise">
                                 <sf:option value="${exercise.id}">
                                     ${exercise.name}
@@ -36,21 +36,21 @@
                             </c:forEach>
                         </sf:select>
                     </div>
-                    <div>
-                        <label for="reps">Reps: </label>
-                        <sf:input id="reps" path="reps" type="number" required="required"/>
+                    <div class="input--div">
+                        <label for="reps" class="label">Reps: </label>
+                        <sf:input id="reps" path="reps" type="number" required="required" class="input"/>
                     </div>
-                    <div>
-                        <label for="sets">Sets: </label>
-                        <sf:input id="sets" path="sets" type="number" required="required"/>
+                    <div class="input--div">
+                        <label for="sets" class="label">Sets: </label>
+                        <sf:input id="sets" path="sets" type="number" required="required" class="input"/>
                     </div>
-                    <div>
-                        <label for="weight">Weight: </label>
-                        <sf:input id="weight" path="weight" type="text" required="required"/>
+                    <div class="input--div">
+                        <label for="weight" class="label">Weight: </label>
+                        <sf:input id="weight" path="weight" type="text" required="required" class="input"/>
                     </div>
-                    <div>
-                        <label for="date">Date: </label>
-                        <sf:input id="date" path="date" type="date" required="required"/>
+                    <div class="input--div">
+                        <label for="date" class="label">Date: </label>
+                        <sf:input id="date" path="date" type="date" required="required" class="input"/>
                     </div>
 
 

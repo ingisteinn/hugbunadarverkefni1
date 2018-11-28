@@ -26,11 +26,11 @@
             <div>
                 <c:forEach var="userWork" items="${userWorkouts}">
                     <div>${userWork.name}</div>
-                    <div>
+                    <ul>
                         <c:forEach var="ex" items="${userWork.exercises}">
                             <li> ${ex.name}</li>
                         </c:forEach>
-                    </div>
+                    </ul>
                 </c:forEach>
             </div>
             <h2> Create a new workout: </h2>
