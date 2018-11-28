@@ -6,22 +6,23 @@
 <html lang="en">
 
 <head>
-    <title>Workout</title>
+    <title class="firtletter"><c:out value = "${category}"/></title>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>"/>
 </head>
+
 <body>
+<%@include file="/WEB-INF/jsp/Header.jsp" %>
+<main>
+<h1 class="firstletter" > <c:out value = "${category}"/> </h1>
 
-<%-- Unfinished --%>
-
-<h1>Workout page</h1>
-
-<div class="exercise__category">
-    <ul class="exercise__list">
+<div class="exercise__category__listcontainer">
+    <ul class="exercise__category__list">
         <c:forEach var="ex" items="${exercises}">
-            <li class="exercise__list-item"><a href="/exercise/${ex.name}">${ex.name}</a></li>
+            <li class="exercise__category__list__item"> ${ex.name}</li>
         </c:forEach>
     </ul>
 </div>
-
 </body>
+</main>
 <footer>Class HBV501G, University of Iceland</footer>
 </html>

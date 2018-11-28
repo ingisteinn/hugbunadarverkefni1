@@ -44,10 +44,6 @@ public class Exercise {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
     public void setCategory(String category) {
         this.category = category;
     }

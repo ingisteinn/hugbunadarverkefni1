@@ -50,6 +50,7 @@ public class ExerciseController {
 
         // Get all Postit Notes with this name and add them to the model
         model.addAttribute("exercises", exerciseService.findByCategory(cat));
+        model.addAttribute("category", cat);
 
         // Return the view
         return "Category";
@@ -60,6 +61,7 @@ public class ExerciseController {
     public String exerciseViewGet(Model model){
         model.addAttribute("exercise", new Exercise());
         model.addAttribute("exercises", exerciseService.findAll());
+
         return "Exercise";
     }
 
