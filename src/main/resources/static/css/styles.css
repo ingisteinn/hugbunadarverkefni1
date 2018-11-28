@@ -178,6 +178,24 @@ h1 {
     margin-right: auto;
 }
 
+.workout--input {
+    margin-left: 55px;
+}
+
+.workout--div {
+    display: flex;
+    flex-direction: row;
+    margin: 4px;
+}
+
+.workout--label {
+    width: 15px;
+}
+
+.workout--dropdown {
+    width: 173px;
+    margin-left: 8px;
+}
 footer{
     position: fixed;
     left: 0;
