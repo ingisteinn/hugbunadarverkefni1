@@ -48,7 +48,7 @@
                 </a>
                 <a href="/category/shoulders">
                     <div class="exercise__category--shoulders">
-                        <img src="../images/shoulder.jpg" />
+                        <img src="../images/shoulders.jpg" />
                         <h3>Shoulders</h3>
                     </div>
                 </a>
