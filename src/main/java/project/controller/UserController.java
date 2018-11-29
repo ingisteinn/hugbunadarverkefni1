@@ -107,7 +107,9 @@ public class UserController {
     @RequestMapping(value = "/schedule", method = RequestMethod.POST)
     public String scheduleViewPost(@ModelAttribute("newWorkout") Workout workout, Model model) {
         Workout w = workoutService.findOne(workout.getId());
+        workoutService.delete(w);
         w.setDate(workout.getDate());
+        workoutService.save(w);
         model.addAttribute("newWorkout", new Workout());
         return "Schedule";
     }
