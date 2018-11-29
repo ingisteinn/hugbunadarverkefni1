@@ -89,12 +89,15 @@
             year = Number(_year);
             removeAll();
 
+
             const h2 = document.createElement('h2');
             h2.appendChild(document.createTextNode('Workout of selected day:'));
             workoutList.appendChild(h2);
 
             <c:forEach items="${workout}" var="workout">
             //Add to array if the progress is for the selected exercise
+
+            if(day === parseInt("${workout.date.getDate()}") && month === parseInt("${workout.date.getMonth()+1}") && year === parseInt("${workout.date.getYear()+1900}")){
             var li = document.createElement('li');
             li.classList.add('workout');
 
@@ -103,7 +106,6 @@
             workoutName.appendChild(document.createTextNode("${workout.name}"));
 
             li.appendChild(workoutName);
-            console.log("${workout.date}");
 
             var ul2 = document.createElement('ul');
             ul2.classList.add('exercisesList');
@@ -122,8 +124,8 @@
                 var weights = document.createElement('li');
 
                 sets.appendChild(document.createTextNode("Sets : ${workoutExercise.sets}"));
-                reps.appendChild(document.createTextNode("Reps : ${workoutExercise.sets}"));
-                weights.appendChild(document.createTextNode("Weights : ${workoutExercise.sets}"));
+                reps.appendChild(document.createTextNode("Reps : ${workoutExercise.reps}"));
+                weights.appendChild(document.createTextNode("Weights : ${workoutExercise.weight}"));
 
                 ul3.appendChild(sets);
                 ul3.appendChild(reps);
@@ -139,7 +141,9 @@
 
             x = 0;
             workoutList.appendChild(ul);
+            }
             </c:forEach>
+
         }
 
 

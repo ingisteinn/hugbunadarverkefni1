@@ -79,7 +79,7 @@ public class Workout {
 
     public void setDate(Date date) {
         this.day = date.getDate();
-        this.month = date.getMonth() + 1;
+        this.month = (date.getMonth() + 1);
         this.year = date.getYear() + 1900;
         this.date = date;
     }
