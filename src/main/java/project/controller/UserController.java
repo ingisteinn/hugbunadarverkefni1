@@ -105,11 +105,20 @@ public class UserController {
     }
 
     @RequestMapping(value = "/schedule", method = RequestMethod.POST)
-    public String scheduleViewPost(@ModelAttribute("newWorkout") Workout workout, Model model) {
+    public String scheduleViewPost(@ModelAttribute("newWorkout") Workout workout, Model model, HttpSession session) {
         Workout w = workoutService.findOne(workout.getId());
         workoutService.delete(w);
         w.setDate(workout.getDate());
         workoutService.save(w);
+        // Get logged in user from session
+        User loggedInUser = (User)session.getAttribute("login");
+        if(loggedInUser != null) {
+            // Get logged in users progress
+            User user = userService.findOne(loggedInUser.getUsername());
+            List<Workout> userWorkouts = workoutService.findByUserId(user.getId());
+            // Add logged in users progress to model
+            model.addAttribute("workout", userWorkouts);
+        }
         model.addAttribute("newWorkout", new Workout());
         return "Schedule";
     }
