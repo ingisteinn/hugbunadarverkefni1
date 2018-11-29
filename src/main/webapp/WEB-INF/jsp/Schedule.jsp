@@ -52,6 +52,10 @@
         <span data-calendar-label="picked"></span>
     </p>
 
+    <div class="workoutList">
+        <ul class="workoutOfDay"></ul>
+    </div>
+
 
     <script src="/js/vanillaCalendar.js" type="text/javascript"></script>
     <script>
@@ -62,32 +66,83 @@
         })
 
         var day, month, year;
-        var months = {
-            'Jan': 1,
-            'Feb': 2,
-            'Mar': 3,
-            'Apr': 4,
-            'May': 5,
-            'Jun': 6,
-            'Jul': 7,
-            'Aug': 8,
-            'Sep': 9,
-            'Oct': 10,
-            'Nov': 11,
-            'Dec': 12
-        };
+
+        function getMonthFromString(mon){
+            return new Date(Date.parse(mon +" 1, 2012")).getMonth()+1
+        }
+
+        let workoutList = document.querySelector('.workoutList')
+        let ul = document.querySelector('.workoutOfDay');
+
+        function removeAll(){
+            while(workoutList.firstChild){
+                workoutList.removeChild(workoutList.firstChild);
+            }
+            while(ul.firstChild){
+                ul.removeChild(ul.firstChild);
+            }
+        }
 
         function getDate(_day,_month,_year){
             day = Number(_day);
-            month = months._month;
+            month = getMonthFromString(_month);
             year = Number(_year);
+            console.log(day + " " + month);
+            removeAll();
+
+            const h2 = document.createElement('h2');
+            h2.appendChild(document.createTextNode('Workout of selected day:'));
+            workoutList.appendChild(h2);
+
+            var x = 0;
+
             <c:forEach items="${workout}" var="workout">
             //Add to array if the progress is for the selected exercise
-            //if
+            var li = document.createElement('li');
+            li.classList.add('workout');
+
+            var workoutName = document.createElement('h3');
+            workoutName.classList.add("workoutName");
+            workoutName.appendChild(document.createTextNode("${workout.name}"));
+
+            li.appendChild(workoutName);
+
+            var ul2 = document.createElement('ul');
+            ul2.classList.add('exercisesList');
+
+            <c:forEach items="${workout.exercises}" var = "workoutExercise">
+                var li2 = document.createElement('li');
+                li2.classList.add('exercises');
+                var exerciseName = document.createElement('h4');
+                exerciseName.appendChild(document.createTextNode("${workoutExercise.name}"));
+                li2.appendChild(exerciseName);
+
+                var ul3 = document.createElement('ul');
+                ul3.classList.add('exercisesInWorkout');
+                var sets = document.createElement('li');
+                var reps = document.createElement('li');
+                var weights = document.createElement('li');
+
+                sets.appendChild(document.createTextNode("Sets : ${workoutExercise.sets}"));
+                reps.appendChild(document.createTextNode("Reps : ${workoutExercise.sets}"));
+                weights.appendChild(document.createTextNode("Weights : ${workoutExercise.sets}"));
+
+                ul3.appendChild(sets);
+                ul3.appendChild(reps);
+                ul3.appendChild(weights);
+
+
+                li2.appendChild(ul3);
+                ul2.appendChild(li2);
+            </c:forEach>
+
+            li.appendChild(ul2);
+            ul.appendChild(li);
+
+            x = 0;
+            workoutList.appendChild(ul);
             </c:forEach>
         }
-
-
 
 
     </script>
@@ -119,7 +174,7 @@
     </div>
 
 
-    <input class="button" type="submit" onsubmit="updateCalendar()" VALUE="Add to schedule"/>
+    <input class="button" type="submit" VALUE="Add to schedule"/>
 
     </sf:form>
 

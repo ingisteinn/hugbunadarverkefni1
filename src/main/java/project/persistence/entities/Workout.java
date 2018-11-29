@@ -71,7 +71,6 @@ public class Workout {
     public void setExercises(List exercises) { this.exercises = exercises; }
 
     public Date getDate() {
-
         return date;
     }
 

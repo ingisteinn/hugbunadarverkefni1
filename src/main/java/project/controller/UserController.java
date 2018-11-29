@@ -104,10 +104,23 @@ public class UserController {
         return "Schedule";
     }
 
-    /*
-    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
-    public String scheduleViewGet(Model model) {
+    @RequestMapping(value = "/schedule", method = RequestMethod.POST)
+    public String scheduleViewPost(Workout workout, Model model, HttpSession session) {
+        User loggedInUser = (User)session.getAttribute("login");
+        Workout w = (Workout)session.getAttribute("workout");
+        w.setName(workout.getName());
+        w.setDate(workout.getDate());
+
+        List<Workout> userWorkouts = new ArrayList<>();
+        if(loggedInUser != null) {
+            userWorkouts = workoutService.findByUserId(loggedInUser.getId());
+        }
+
+        Workout work = this.workoutService.save(w);
+        userWorkouts.add(work);
+
+        model.addAttribute("userWorkouts", userWorkouts);
+        session.setAttribute("workout", new Workout());
         return "Schedule";
     }
-    */
 }
