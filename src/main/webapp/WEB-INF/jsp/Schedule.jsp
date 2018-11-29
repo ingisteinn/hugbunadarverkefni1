@@ -87,14 +87,11 @@
             day = Number(_day);
             month = getMonthFromString(_month);
             year = Number(_year);
-            console.log(day + " " + month);
             removeAll();
 
             const h2 = document.createElement('h2');
             h2.appendChild(document.createTextNode('Workout of selected day:'));
             workoutList.appendChild(h2);
-
-            var x = 0;
 
             <c:forEach items="${workout}" var="workout">
             //Add to array if the progress is for the selected exercise
@@ -106,6 +103,7 @@
             workoutName.appendChild(document.createTextNode("${workout.name}"));
 
             li.appendChild(workoutName);
+            console.log("${workout.date}");
 
             var ul2 = document.createElement('ul');
             ul2.classList.add('exercisesList');
@@ -160,13 +158,13 @@
     <c:if test="${not empty error}"><h4>${error}</h4></c:if>
     <div>
         <label for="workout">Workout: </label>
-        <select  id="workout">
+        <sf:select  id="workout" path="id">
             <c:forEach items="${workout}" var="workout">
-                <option value="${workout.id}" path="id">
+                <sf:option value="${workout.id}">
                     ${workout.name}
-                </option>
+                </sf:option>
             </c:forEach>
-        </select>
+        </sf:select>
     </div>
     <div>
         <label for="date">Date: </label>

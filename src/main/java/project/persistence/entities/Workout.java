@@ -1,5 +1,7 @@
 package project.persistence.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +19,7 @@ public class Workout {
     @CollectionTable(name="listOfWorkoutExercises")
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<WorkoutExercise> exercises;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     private int day;
     private int month;
