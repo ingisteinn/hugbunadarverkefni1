@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Exercise;
 import project.service.ExerciseService;
 
-import java.util.List;
 
 @Controller
 public class ExerciseController {
@@ -24,32 +23,19 @@ public class ExerciseController {
         this.exerciseService = exerciseService;
     }
 
-    // Request mapping is the path that you want to map this method to
-    // In this case, the mapping is the root "/", so when the project
-    // is running and you enter "localhost:8080" into a browser, this
-    // method is called
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String indexViewGet(Model model){
-        model.addAttribute("chest", exerciseService.findByCategory("chest"));
-        model.addAttribute("back", exerciseService.findByCategory("back"));
-        model.addAttribute("legs", exerciseService.findByCategory("legs"));
-        model.addAttribute("core", exerciseService.findByCategory("core"));
-        model.addAttribute("arms", exerciseService.findByCategory("arms"));
-        model.addAttribute("shoulders", exerciseService.findByCategory("shoulders"));
+
         return "Index";
     }
 
-    // Method that returns the correct view for the URL /postit/{name}
-    // The {name} part is a Path Variable, and we can reference that in our method
-    // parameters as a @PathVariable. This enables us to create dynamic URLs that are
-    // based on the data that we have.
-    // This method finds all Postit Notes posted by someone with the requested {name}
-    // and returns a list with all those Postit Notes.
     @RequestMapping(value = "/category/{cat}", method = RequestMethod.GET)
     public String getExerciseByName(@PathVariable String cat, Model model){
 
-        // Get all Postit Notes with this name and add them to the model
+        // Get all exercises in category and add them to the model
         model.addAttribute("exercises", exerciseService.findByCategory(cat));
+        // Add the name of the category to the model
         model.addAttribute("category", cat);
 
         // Return the view
@@ -67,9 +53,11 @@ public class ExerciseController {
 
     @RequestMapping(value = "/exercise", method = RequestMethod.POST)
     public String exerciseViewPost(@ModelAttribute("exercise") Exercise exercise, Model model){
+        //Save exercise to database
         this.exerciseService.save(exercise);
         model.addAttribute("success", "Exercise was added");
         model.addAttribute("exercise", new Exercise());
+        //Add all exercises to model
         model.addAttribute("exercises", exerciseService.findAll());
         return "Exercise";
     }
