@@ -42,8 +42,10 @@ public class UserService {
         List<List<Map<Object,Object>>> chartData = new ArrayList<List<Map<Object,Object>>>();
         List<Map<Object,Object>> dataPoints = new ArrayList<Map<Object,Object>>();
 
+        //Get users progress
         List<Progress> progress = progressRepository.findByUserId(userId);
 
+        //Iterate over users progress and put into map and the into the dataPoints list
         for(Progress prog : progress) {
             map = new HashMap<Object, Object>();
             map.put("x", prog.getDate().getTime());
@@ -51,7 +53,7 @@ public class UserService {
             map.put("exId", prog.getExerciseId());
             dataPoints.add(map);
         }
-
+        //Put all dataPoints into chartData list
         chartData.add(dataPoints);
 
         return chartData;
