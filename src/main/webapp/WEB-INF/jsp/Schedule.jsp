@@ -17,12 +17,12 @@
 <%@include file="/WEB-INF/jsp/Header.jsp" %>
 <main>
     <c:choose>
-        <%--If the session doesn't have a login attribute--%>
+    <%--If the session doesn't have a login attribute--%>
     <c:when test="${empty sessionScope.login}">
     <h1>You have to be logged in to add to schedule!</h1>
     </c:when>
 
-        <%--If the session has a login attribute--%>
+    <%--If the session has a login attribute--%>
     <c:otherwise>
 
     <div id="v-cal">
@@ -133,14 +133,6 @@
                 var ul2 = document.createElement('ul');
                 ul2.classList.add('exercisesList');
 
-                <c:choose>
-                <%--If the session doesn't have a login attribute--%>
-                <c:when test="${empty sessionScope.login}">
-                <h1>You have to be logged in to add to schedule!</h1>
-                </c:when>
-                <%--If the session has a login attribute--%>
-                <c:otherwise>
-
                 // Print out information about each exercise in the workout
                 <c:forEach items="${workout.exercises}" var = "workoutExercise">
                     var li2 = document.createElement('li');
@@ -166,9 +158,6 @@
                     li2.appendChild(ul3);
                     ul2.appendChild(li2);
                 </c:forEach>
-
-             </c:otherwise>
-             </c:choose>
 
             li.appendChild(ul2);
             ul.appendChild(li);
