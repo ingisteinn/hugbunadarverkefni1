@@ -17,16 +17,19 @@
         <h1>Add new exercise</h1>
         <c:if test="${not empty success}"><h3>${success}</h3></c:if>
 
+        <%--Post method for adding a new exercise to the database--%>
         <sf:form method="POST" modelAttribute="exercise" action="/exercise">
 
             <table>
                 <tr>
                     <td>Name: </td>
+                    <%--Name the exercise--%>
                     <td><sf:input path="name" type="text" placeholder="Name" required="required"/></td>
                 </tr>
                 <tr>
                     <td>Category: </td>
                     <td>
+                        <%--Select appropriate category for the exercise--%>
                         <sf:select path="category">
                             <sf:option selected="selected" value="arms">Arms</sf:option>
                             <sf:option value="back">Back</sf:option>
@@ -46,9 +49,10 @@
         <c:choose>
             <c:when test="${not empty exercises}">
                 <table class="exercises">
+                    <%--Display exercises in database--%>
                     <c:forEach var="ex" items="${exercises}">
                         <tr>
-                            <td><a href="/exercise/${ex.name}">${ex.name}</a></td>
+                            <td><a href="/exercise/${ex.name}">${ex.name}</td>
                             <td>${ex.category}</td>
                         </tr>
                     </c:forEach>

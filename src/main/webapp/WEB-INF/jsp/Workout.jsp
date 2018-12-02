@@ -24,6 +24,7 @@
             <%--If the session has a login attribute--%>
             <h2>My workouts</h2>
             <div>
+                <%--Display each of the users workouts at the top of the page--%>
                 <c:forEach var="userWork" items="${userWorkouts}">
                     <div>${userWork.name}</div>
                     <ul>
@@ -34,6 +35,10 @@
                 </c:forEach>
             </div>
             <h2> Create a new workout: </h2>
+            <%--
+            Take selected exercise and information about sets, reps and weight and
+            create a new workoutExercise entity and add it to the workout.
+            --%>
             <sf:form method="POST" modelAttribute="exercise" action="/addExerciseToWorkout">
                 <div>
                     <label for="exercise" class="label">Exercise: </label>
@@ -61,6 +66,7 @@
                 </div>
                 <input class="button" type="submit" VALUE="Add exercise"/>
             </sf:form>
+            <%--Create a new workout from the chosen exercises.--%>
             <sf:form method="POST" modelAttribute="workout" action="/workout">
 
                 <div class="input--div">
@@ -77,6 +83,7 @@
 
             <h2>Exercises in workout: </h2>
             <ul>
+                <%--Display the exercises currently in the workout--%>
                 <c:forEach var="ex" items="${workout.exercises}">
                     <li> ${ex.name}</li>
                 </c:forEach>
