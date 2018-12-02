@@ -3,9 +3,7 @@
 
 ### Java ###
 *.class
-pom.xml
-application.properties
-src/main/resources/application.properties
+
 .DS_Store
 
 # Mobile Tools for Java (J2ME)
