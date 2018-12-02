@@ -24,7 +24,7 @@
 
         <%--If the session has a login attribute--%>
     <c:otherwise>
-        
+
     <div id="v-cal">
         <div class="vcal-header">
             <button class="vcal-btn" data-calendar-toggle="previous">

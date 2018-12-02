@@ -66,12 +66,14 @@ public class UserController {
         return "Progress";
     }
 
+    //Controller for Analysis page
     @RequestMapping(value = "/chart", method = RequestMethod.GET)
     public String progressViewPost( HttpSession session, ModelMap modelMap, Model model) {
+        // Get logged in user from session
         User loggedInUser = (User)session.getAttribute("login");
         if(loggedInUser != null) {
             List<List<Map<Object, Object>>> chartData = userService.getChartData(loggedInUser.getId());
-            //List<Progress> chartData = userService.findByUserId(loggedInUser.getId());
+            // Add the data for the chart to the modelMap
             modelMap.addAttribute("dataPointsList", chartData);
             //Get logged in user's progress
             List<Progress> userProg = userService.findByUserId(loggedInUser.getId());
@@ -84,7 +86,6 @@ public class UserController {
                 }
             }
             model.addAttribute("exercises", userExercises);
-            model.addAttribute("newProgress", new Progress());
         }
         return "Chart";
     }
@@ -106,9 +107,13 @@ public class UserController {
 
     @RequestMapping(value = "/schedule", method = RequestMethod.POST)
     public String scheduleViewPost(@ModelAttribute("newWorkout") Workout workout, Model model, HttpSession session) {
+        //Get workout from database
         Workout w = workoutService.findOne(workout.getId());
+        //Delete workout from database
         workoutService.delete(w);
+        //Set the new id of the workout
         w.setDate(workout.getDate());
+        //Save the workout to database with new id
         workoutService.save(w);
         // Get logged in user from session
         User loggedInUser = (User)session.getAttribute("login");

@@ -47,8 +47,9 @@ public class LoginController {
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session){
+        //Remove login info from session
         session.removeAttribute("login");
-
+        //Redirect to homepage
         return "redirect:";
     }
 }
