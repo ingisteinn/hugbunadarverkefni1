@@ -16,6 +16,15 @@
 <body>
 <%@include file="/WEB-INF/jsp/Header.jsp" %>
 <main>
+    <c:choose>
+        <%--If the session doesn't have a login attribute--%>
+    <c:when test="${empty sessionScope.login}">
+    <h1>You have to be logged in to add to schedule!</h1>
+    </c:when>
+
+        <%--If the session has a login attribute--%>
+    <c:otherwise>
+        
     <div id="v-cal">
         <div class="vcal-header">
             <button class="vcal-btn" data-calendar-toggle="previous">
@@ -173,14 +182,7 @@
 
     </script>
 
-    <c:choose>
-    <%--If the session doesn't have a login attribute--%>
-    <c:when test="${empty sessionScope.login}">
-    <h1>You have to be logged in to add to schedule!</h1>
-    </c:when>
 
-    <%--If the session has a login attribute--%>
-    <c:otherwise>
 
     <%-- Post method to submit the chosen date to the workout--%>
     <sf:form method="POST" modelAttribute="newWorkout" action="/schedule">
