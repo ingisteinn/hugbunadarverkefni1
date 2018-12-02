@@ -1,0 +1,30 @@
+CREATE DATABASE workout;
+
+\connect workout;
+
+INSERT INTO Exercise(id,category,name) VALUES 
+(1,'chest','Barbell Bench Press'),
+(2,'chest','Incline Barbell Bench Press'),
+(3,'chest','Dumbbell Bench Press'),
+(4,'chest','Incline Dumbbell Bench Press'),
+(5,'arms','Barbell Curl'),
+(6,'arms','Dumbbell Curl'),
+(7,'arms','Rope Push Down'),
+(8,'arms','Lying Triceps Extension'),
+(9,'back','Barbell Row'),
+(10,'back','Chin up'),
+(11,'back','Lat Pulldown'),
+(12,'back','Pull Up'),
+(13,'core','Crunch'),
+(14,'core','Cable Crunch'),
+(15,'core','Decline Crunch'),
+(16,'core','Crunch Machine'),
+(17,'legs','Barbell Squat'),
+(18,'legs','Leg Press'),
+(19,'legs','Leg Extension'),
+(20,'legs','Lying Leg Curl'),
+(21,'shoulders','Overhead Press'),
+(22,'shoulders','Arnold Dumbbell Press'),
+(23,'shoulders','Seated Dumbbell Press'),
+(24,'shoulders','Lateral Dumbbell Raise');
+
