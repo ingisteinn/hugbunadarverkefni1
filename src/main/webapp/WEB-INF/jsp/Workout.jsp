@@ -93,10 +93,6 @@
     </c:choose>
 
     </main>
-
-<%-- Unfinished --%>
-
-
 </body>
 <footer>Class HBV501G, University of Iceland</footer>
 </html>

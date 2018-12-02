@@ -34,23 +34,32 @@ public class WorkoutController {
         this.workoutExerciseService = workoutExerciseService;
     }
 
-    /*
-     * Not implemented yet!
-     */
+    /* WorkoutController has three methods.  One to get saved workouts and exercise and create initial empty instances
+       In order to add a workout(that's not empty) to the database we first need to create a list of exercises which
+       gets added to the workout.  When the workout has a defined list of exercises we can then send that workout to
+       the database.  */
 
     @RequestMapping(value = "/workout", method = RequestMethod.GET)
     public String workoutViewGet(@ModelAttribute("workout") Workout workout, Model model, HttpSession session) {
+        // If there's a defined session, get attribute from model Else create an empty workout instance to the model
         if(session.getAttribute("workout") != null) {
             model.addAttribute("workout", session.getAttribute("workout"));
             Workout w = (Workout)session.getAttribute("workout");
 
+        // Else add an empty workout instance to the model
         } else {
             session.setAttribute("workout", new Workout());
             model.addAttribute("workout", new Workout());
         }
 
+        // Create model for exercises added to workout
         model.addAttribute("exercise", new WorkoutExercise());
+
+        // Retrieve all exercises from model in order to display the list of exercises
         model.addAttribute("exercises", exerciseService.findAll());
+
+
+        // Retrieve the workouts for the logged in user
         User loggedInUser = (User)session.getAttribute("login");
         if(loggedInUser != null) {
             List<Workout> userWorkouts = workoutService.findByUserId(loggedInUser.getId());
@@ -61,18 +70,21 @@ public class WorkoutController {
 
     @RequestMapping(value = "/workout", method = RequestMethod.POST)
     public String workoutViewPost(Workout workout, Model model, HttpSession session) {
+        // post method to add a new workout to database
         User loggedInUser = (User)session.getAttribute("login");
         Workout w = (Workout)session.getAttribute("workout");
         w.setName(workout.getName());
         w.setCategory(workout.getCategory());
         w.setUserId(loggedInUser.getId());
 
-
+        // Create an arraylist to store userworkouts
         List<Workout> userWorkouts = new ArrayList<>();
         if(loggedInUser != null) {
+            // retrieve all workouts created by the user
             userWorkouts = workoutService.findByUserId(loggedInUser.getId());
         }
 
+        // add the new workout to the arraylist of workouts created by the user
         Workout work = this.workoutService.save(w);
         userWorkouts.add(work);
 
@@ -85,11 +97,17 @@ public class WorkoutController {
 
     @RequestMapping(value = "/addExerciseToWorkout", method = RequestMethod.POST)
     public String workoutViewPostExercise(@ModelAttribute("exercise") WorkoutExercise ex, Model model, HttpSession session) {
+        // Method to add exercises to a list which goes into a workout
+
         List<WorkoutExercise> listEx = new ArrayList<>();
         Workout workout = (Workout)session.getAttribute("workout");
+
+        // Get exercises previously added to the workout (if there are any)
         if(workout.getExercises() != null) {
             listEx = workout.getExercises();
         }
+
+        // Add list to model
         String exName = exerciseService.findOne(ex.getId()).getName();
         ex.setName(exName);
         ex.setId(null);
@@ -97,7 +115,10 @@ public class WorkoutController {
         listEx.add(saveWork);
         workout.setExercises(listEx);
 
+        // Add workout to session
         session.setAttribute("workout", workout);
+
+        // Redirect to workout
         return "redirect:workout";
     }
 }
