@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import project.persistence.entities.Exercise;
+import project.persistence.entities.User;
 import project.service.ExerciseService;
 
 import java.util.List;
@@ -30,23 +31,22 @@ public class ExerciseController {
     }
 
     @GetMapping("/category/{cat}")
-    public List<Exercise> getExerciseByName(@PathVariable String cat, Model model){
+    public List<Exercise> getExerciseByName(@PathVariable String cat){
         return exerciseService.findByCategory(cat);
     }
-    
+
     @GetMapping("/exercise")
     public List<Exercise> exerciseViewGet(){
         return exerciseService.findAll();
     }
 
-    @RequestMapping(value = "/exercise", method = RequestMethod.POST)
-    public String exerciseViewPost(@ModelAttribute("exercise") Exercise exercise, Model model){
+    @PostMapping("/exercise")
+    public List<Exercise> exerciseViewPost(@RequestBody Exercise exercise){
         //Save exercise to database
         this.exerciseService.save(exercise);
-        model.addAttribute("success", "Exercise was added");
-        model.addAttribute("exercise", new Exercise());
-        //Add all exercises to model
-        model.addAttribute("exercises", exerciseService.findAll());
-        return "Exercise";
+
+        return exerciseService.findAll();
     }
+
+
 }
