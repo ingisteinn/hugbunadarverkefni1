@@ -24,8 +24,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User findOne(String username) {
+    public List<User> findOne(String username) {
         return userRepository.findOne(username);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     public Progress saveProgress(Progress progress) {

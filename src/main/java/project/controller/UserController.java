@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import project.persistence.entities.Exercise;
 import project.persistence.entities.Progress;
 import project.persistence.entities.User;
@@ -17,7 +15,7 @@ import project.service.WorkoutService;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
-@Controller
+@RestController
 public class UserController {
     private UserService userService;
     private ExerciseService exerciseService;
@@ -30,21 +28,27 @@ public class UserController {
         this.workoutService = workoutService;
     }
 
-    @RequestMapping(value = "/progress", method = RequestMethod.GET)
-    public String progressViewGet(HttpSession session, Model model) {
-        // Get logged in user from session
-        User loggedInUser = (User)session.getAttribute("login");
-        if(loggedInUser != null) {
-            // Get logged in users progress
-            List<Progress> userProgress = userService.findByUserId(loggedInUser.getId());
-            // Add logged in users progress to model
-            model.addAttribute("progress", userProgress);
+    @GetMapping("/user")
+    public List<User> getUser(@RequestParam(value="username") String username) {
+        if(username.length()>0){
+            return userService.findOne(username);
         }
-        // Add all exercises to model
-        model.addAttribute("exercises", exerciseService.findAll());
-        // Add a empty instance of Progress to model
-        model.addAttribute("newProgress", new Progress());
-        return "Progress";
+        return userService.findAll();
+
+    }
+
+    @GetMapping("/progress")
+    public List<Progress> progressGet(@RequestParam(value="uid") Long uid) {
+        // Get logged in user from session
+//        User loggedInUser = (User)session.getAttribute("login");
+//        if(loggedInUser != null) {
+//            // Get logged in users progress
+//            List<Progress> userProgress = userService.findByUserId(loggedInUser.getId());
+//            // Add logged in users progress to model
+//            return userService.findByUserId(loggedInUser.getId());
+//        }
+
+        return userService.findByUserId(uid);
     }
 
     @RequestMapping(value = "/progress", method = RequestMethod.POST)
@@ -92,39 +96,39 @@ public class UserController {
 
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)
     public String scheduleViewGet(HttpSession session, Model model) {
-        // Get logged in user from session
-        User loggedInUser = (User)session.getAttribute("login");
-        if(loggedInUser != null) {
-            // Get logged in users progress
-            User user = userService.findOne(loggedInUser.getUsername());
-            List<Workout> userWorkouts = workoutService.findByUserId(user.getId());
-            // Add logged in users progress to model
-            model.addAttribute("workout", userWorkouts);
-        }
-        model.addAttribute("newWorkout", new Workout());
+//        // Get logged in user from session
+//        User loggedInUser = (User)session.getAttribute("login");
+//        if(loggedInUser != null) {
+//            // Get logged in users progress
+//            User user = userService.findOne(loggedInUser.getUsername());
+//            List<Workout> userWorkouts = workoutService.findByUserId(user.getId());
+//            // Add logged in users progress to model
+//            model.addAttribute("workout", userWorkouts);
+//        }
+//        model.addAttribute("newWorkout", new Workout());
         return "Schedule";
     }
 
     @RequestMapping(value = "/schedule", method = RequestMethod.POST)
     public String scheduleViewPost(@ModelAttribute("newWorkout") Workout workout, Model model, HttpSession session) {
-        //Get workout from database
-        Workout w = workoutService.findOne(workout.getId());
-        //Delete workout from database
-        workoutService.delete(w);
-        //Set the new id of the workout
-        w.setDate(workout.getDate());
-        //Save the workout to database with new id
-        workoutService.save(w);
-        // Get logged in user from session
-        User loggedInUser = (User)session.getAttribute("login");
-        if(loggedInUser != null) {
-            // Get logged in users progress
-            User user = userService.findOne(loggedInUser.getUsername());
-            List<Workout> userWorkouts = workoutService.findByUserId(user.getId());
-            // Add logged in users progress to model
-            model.addAttribute("workout", userWorkouts);
-        }
-        model.addAttribute("newWorkout", new Workout());
+//        //Get workout from database
+//        Workout w = workoutService.findOne(workout.getId());
+//        //Delete workout from database
+//        workoutService.delete(w);
+//        //Set the new id of the workout
+//        w.setDate(workout.getDate());
+//        //Save the workout to database with new id
+//        workoutService.save(w);
+//        // Get logged in user from session
+//        User loggedInUser = (User)session.getAttribute("login");
+//        if(loggedInUser != null) {
+//            // Get logged in users progress
+//            User user = userService.findOne(loggedInUser.getUsername());
+//            List<Workout> userWorkouts = workoutService.findByUserId(user.getId());
+//            // Add logged in users progress to model
+//            model.addAttribute("workout", userWorkouts);
+//        }
+//        model.addAttribute("newWorkout", new Workout());
         return "Schedule";
     }
 }

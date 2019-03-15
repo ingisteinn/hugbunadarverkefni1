@@ -6,11 +6,14 @@ import project.persistence.entities.Progress;
 import project.persistence.entities.User;
 import project.persistence.entities.Workout;
 
+import java.util.List;
+
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User save(User user);
 
     @Query(value = "SELECT p FROM User p WHERE p.username = ?1")
-    User findOne(String username);
+    List<User> findOne(String username);
+    List<User> findAll();
 
 }

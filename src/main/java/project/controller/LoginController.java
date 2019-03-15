@@ -31,17 +31,17 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginViewPost(@ModelAttribute("login") User login, HttpSession session, Model model){
-        User loggedInUser = this.userService.findOne(login.getUsername());
-        // Check if username exists and password matches
-        if(loggedInUser != null && loggedInUser.getPassword().equals(login.getPassword())) {
-            // Add logged in user to session
-            session.setAttribute("login", loggedInUser);
-            //Redirect to frontpage
-            return "redirect:";
-        } else {
-            // Error handling
-            model.addAttribute("error", "Wrong username and/or password");
-        }
+//        User loggedInUser = this.userService.findOne(login.getUsername());
+//        // Check if username exists and password matches
+//        if(loggedInUser != null && loggedInUser.getPassword().equals(login.getPassword())) {
+//            // Add logged in user to session
+//            session.setAttribute("login", loggedInUser);
+//            //Redirect to frontpage
+//            return "redirect:";
+//        } else {
+//            // Error handling
+//            model.addAttribute("error", "Wrong username and/or password");
+//        }
         return "Login";
     }
 

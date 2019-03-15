@@ -3,7 +3,7 @@
 
 ### Java ###
 *.class
-
+.src/main/.DS_Store
 .DS_Store
 
 # Mobile Tools for Java (J2ME)
